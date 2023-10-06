@@ -1,0 +1,63 @@
+.custom-banner {
+  max-height: 320px;
+  overflow: hidden; /* Cache tout ce qui dépasse la hauteur maximale */
+}
+
+.custom-photo{
+  margin-top: -10.5%;
+  margin-left: 2%;
+  width: 12%;
+  border-radius: 20px;
+}
+.collection-photo{
+  padding-bottom: 2%;
+}
+.nom-collection{
+  font-size: 200%;
+  font-weight: bold;
+  padding-left: 0.5%;
+}
+.custom-container{
+  margin-top: -2%;
+  padding-left: 2%;
+}
+
+.nom-createur{
+  font-weight: bold;
+}
+.nom-createur:before {
+  padding-left: 0.5%;
+  font-weight: normal;
+  content: "By ";
+}
+.custom-info{
+  font-weight: bold;
+}
+.custom-infol{
+  font-weight: bold;
+}
+
+.custom-info:after{
+  content: " · ";
+}
+
+.description{
+  padding-left: 0.75%;
+}
+section{
+  padding-bottom: 5%;
+}
+
+@media all and (max-width: 1000px) {
+  .custom-photo{
+    width: 20%;
+    margin-top: -15%;
+  }
+}
+
+@media all and (max-width: 700px) {
+  .nom-collection{
+    font-size: 150%;
+  }
+}
+

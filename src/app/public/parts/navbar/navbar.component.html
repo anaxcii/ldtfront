@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg  bg-white sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><img src="assets/img/logo.png" class="w-50"></a>
+
+    <!-- Logo de la loupe avec le déclencheur de la modal de recherche -->
+
+    <a class="nav-link me-2 d-block d-lg-none" href="#" data-bs-toggle="modal" data-bs-target="#searchModal">
+      <img src="assets/img/fi-br-search.svg" class="img-fluid">
+    </a>
+
+    <!-- Autres liens du menu mobile -->
+    <a class="nav-link me-2 d-block d-lg-none" href="#"><img src="assets/img/money.svg" class="img-fluid"></a>
+    <a class="nav-link me-2 d-block d-lg-none" href="/auth"><img src="assets/img/user.svg" class="img-fluid"></a>
+    <a class="nav-link me-2 d-block d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#cartMenu"><img src="assets/img/shopping-cart.svg" class="img-fluid"></a>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav me-5 mb-2 mb-lg-0">
+        <li>
+          <form class="d-flex custom-search-form me-5" role="search">
+            <input class="custom-search-input" type="search" placeholder="Recherche" aria-label="Search">
+          </form>
+        </li>
+        <li class="nav-item">
+          <a href="#"><img src="assets/img/money.svg" class="nav-link me-5 d-none d-lg-block"></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="/auth"><img src="assets/img/user.svg" class="nav-link me-5 d-none d-lg-block"></a>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+            <li><a class="dropdown-item" href="auth/login">Profil</a></li>
+            <li><a class="dropdown-item" href="auth/logout">Se déconnecter</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Aide</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartMenu">
+            <img src="assets/img/shopping-cart.svg" class="d-none d-lg-block">
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Modal de recherche -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form class="d-flex custom-search-form">
+          <input class="custom-search-input" type="search" placeholder="Recherche" aria-label="Search">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="cartMenu">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Mon Panier</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul>
+      <li>Produit 1</li>
+      <li>Produit 2</li>
+      <li>Produit 3</li>
+    </ul>
+  </div>
+</div>
