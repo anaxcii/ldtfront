@@ -1,4 +1,4 @@
-<app-navbar xmlns="http://www.w3.org/1999/html"></app-navbar>
+<app-navbar></app-navbar>
 
 <section>
   <div class="custom-banner">
@@ -20,43 +20,159 @@
       <div class="p-2">Category</div>
       <div class="p-2 custom-infol">Art</div>
     </div>
-    <p class="description">Grid Haus is an animated generative art project that turns your entire wallet address into an art piece.</p>
+    <p class="description">Grid Haus is an animated generative art project that turns your entire wallet address into an
+      art piece.</p>
   </div>
+  <hr class="section-divider">
 </section>
+
 <section>
-  <div class="container">
-    <div class="row">
-      <div class="col-3">
-      <div class="card" style="width: 18rem;">
-        <img src="assets/img/gridhaus.avif" class="card-img-top" alt="...">
-        <div class="card-body">
-          <p class="card-text">Grid Haus</p>
-          <p class="card-text">5 ETH</p>
+  <div class="container-fluid">
+
+    <div class="sticky-nav">
+      <div class="container-fluid">
+        <div class="row custom-row">
+          <div class="col-2">
+
+          </div>
+          <div class="col-6">
+
+            <form class="d-flex custom-search-form me-5" role="search">
+              <input class="custom-search-input" type="search" placeholder="Recherche par nom" aria-label="Search">
+            </form>
+          </div>
+
+          <div class="col-lg-2"></div>
+
+          <div class="col-1">
+            <div class="dropdown">
+              <button class="btn btn-custom dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                Tri
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Moin chère au plus chère</a></li>
+                <li><a class="dropdown-item" href="#">Plus chère au moins chère</a></li>
+                <li><a class="dropdown-item" href="#">Récement vendu</a></li>
+                <li><a class="dropdown-item" href="#">Récemment créer</a></li>
+              </ul>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
-      <div class="col-3">
-        <div class="card" style="width: 18rem;">
-          <img src="assets/img/gridhaus.avif" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
+
+    <div class="row">
+      <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+        <button class="btn custom-tri"><img src="assets/img/tri.svg" class="img-fluid"></button>
+        <div class="card sticky-side">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <p>Tous</p>
+              <p>En vente</p>
+              <p>Nouveau</p>
+            </li>
+            <li class="list-group-item">
+              <div class="container-fluid">
+                <p>Prix</p>
+                <div class="row">
+                  <div class="col-md-6">
+                    <input type="number" class="form-control" id="minValue" placeholder="Min">
+                  </div>
+                  <div class="col-md-6">
+                    <input type="number" class="form-control" id="maxValue" placeholder="Max">
+                  </div>
+                </div>
+                  <div class="row">
+                  <div class="col-md-4 ">
+                    <button class="btn btn-dark" id="applyButton">Appliquer</button>
+                  </div>
+                </div>
+              </div>
+
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="col-3">
-        <div class="card" style="width: 18rem;">
-          <img src="assets/img/gridhaus.avif" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+      <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
+            <a href="/nft">
+              <div class="card">
+                <img src="assets/img/gridhaus.avif" class="card-img-top img-fluid" alt="...">
+                <div class="card-body">
+                  <p class="card-text">Contenu de la carte</p>
+                </div>
+              </div>
+            </a>
           </div>
-        </div>
-      </div>
-      <div class="col-3">
-        <div class="card" style="width: 18rem;">
-          <img src="assets/img/gridhaus.avif" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
+            <div class="card">
+              <img src="assets/img/gridhaus.avif" class="card-img-top img-fluid" alt="...">
+              <div class="card-body">
+                <p class="card-text">Contenu de la carte</p>
+              </div>
+            </div>
           </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
+            <div class="card">
+              <img src="assets/img/gridhaus.avif" class="card-img-top img-fluid" alt="...">
+              <div class="card-body">
+                <p class="card-text">Contenu de la carte</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
+            <div class="card">
+              <img src="assets/img/gridhaus.avif" class="card-img-top img-fluid" alt="...">
+              <div class="card-body">
+                <p class="card-text">Contenu de la carte</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
+            <div class="card">
+              <img src="assets/img/gridhaus.avif" class="card-img-top img-fluid" alt="...">
+              <div class="card-body">
+                <p class="card-text">Contenu de la carte</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
+            <div class="card">
+              <img src="assets/img/gridhaus.avif" class="card-img-top img-fluid" alt="...">
+              <div class="card-body">
+                <p class="card-text">Contenu de la carte</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
+            <div class="card">
+              <img src="assets/img/gridhaus.avif" class="card-img-top img-fluid" alt="...">
+              <div class="card-body">
+                <p class="card-text">Contenu de la carte</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
+            <div class="card">
+              <img src="assets/img/gridhaus.avif" class="card-img-top img-fluid" alt="...">
+              <div class="card-body">
+                <p class="card-text">Contenu de la carte</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
+            <div class="card">
+              <img src="assets/img/gridhaus.avif" class="card-img-top img-fluid" alt="...">
+              <div class="card-body">
+                <p class="card-text">Contenu de la carte</p>
+              </div>
+            </div>
+          </div>
+          <!-- Vous pouvez ajouter d'autres éléments responsifs ici -->
         </div>
       </div>
     </div>
@@ -65,7 +181,6 @@
 
 </section>
 
-<app-footer></app-footer>
 
 
 
