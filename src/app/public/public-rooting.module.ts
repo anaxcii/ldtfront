@@ -12,12 +12,12 @@ import {NftComponent} from "./nft/nft.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'collection', component: CollectionComponent },
+  { path: 'collection/:id', component: CollectionComponent },
   { path: 'category/art', component: ArtComponent },
   { path: 'category/photo', component: PhotoComponent },
   { path: 'category/gaming', component: GamingComponent },
   { path: 'category/pfps', component: PfpsComponent },
-  { path: 'nft', component: NftComponent },
+  { path: 'nft/:id', component: NftComponent },
 ];
 
 @NgModule({

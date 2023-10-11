@@ -1,27 +1,26 @@
 <app-navbar></app-navbar>
 
 <section>
-  <div class="custom-banner">
-    <img src="assets/img/gridhausbanner.avif" class="img-fluid">
+  <div class=" custom-banner">
+    <img src="{{ gallery.banner_image }}" class="img-fluid w-100">
   </div>
   <div class="collection-photo">
-    <img src="assets/img/gridhaus.avif" class="img-fluid img-thumbnail custom-photo">
+    <img src="{{ gallery.image }}" class="img-fluid img-thumbnail custom-photo">
   </div>
   <div class="container-fluid custom-container">
-    <p class="nom-collection">Grid Haus</p>
-    <p class="nom-createur">mumbledev</p>
+    <p class="nom-collection">{{ gallery.name }}</p>
+    <p class="nom-createur">{{ gallery.creator.username }}</p>
     <div class="d-flex flex-wrap">
       <div class="p-2">Items</div>
       <div class="p-2 custom-info">375</div>
       <div class="p-2">Created</div>
-      <div class="p-2 custom-info">Sep 2023</div>
+      <div class="p-2 custom-info">{{ gallery.dropdate | date:'mediumDate' }}</div>
       <div class="p-2">Chain</div>
       <div class="p-2 custom-info">Ethereum</div>
       <div class="p-2">Category</div>
-      <div class="p-2 custom-infol">Art</div>
+      <div class="p-2 custom-infol">{{ gallery.category}}</div>
     </div>
-    <p class="description">Grid Haus is an animated generative art project that turns your entire wallet address into an
-      art piece.</p>
+    <p class="description">{{gallery.description}}</p>
   </div>
   <hr class="section-divider">
 </section>
@@ -98,81 +97,17 @@
 
       <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
         <div class="row">
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
-            <a href="/nft">
+          <div *ngFor="let nft of nfts" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3 ">
+            <a href="nft/{{nft.id}}">
               <div class="card">
-                <img src="assets/img/gridhaus.avif" class="card-img-top img-fluid" alt="...">
+                <img src="{{nft.image}}" class="card-img-top img-fluid" alt="...">
                 <div class="card-body">
-                  <p class="card-text">Contenu de la carte</p>
+                  <p class="card-text">{{nft.name}}</p>
+                  <p class="card-text">{{nft.price}}ETH</p>
                 </div>
               </div>
             </a>
           </div>
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
-            <div class="card">
-              <img src="assets/img/gridhaus.avif" class="card-img-top img-fluid" alt="...">
-              <div class="card-body">
-                <p class="card-text">Contenu de la carte</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
-            <div class="card">
-              <img src="assets/img/gridhaus.avif" class="card-img-top img-fluid" alt="...">
-              <div class="card-body">
-                <p class="card-text">Contenu de la carte</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
-            <div class="card">
-              <img src="assets/img/gridhaus.avif" class="card-img-top img-fluid" alt="...">
-              <div class="card-body">
-                <p class="card-text">Contenu de la carte</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
-            <div class="card">
-              <img src="assets/img/gridhaus.avif" class="card-img-top img-fluid" alt="...">
-              <div class="card-body">
-                <p class="card-text">Contenu de la carte</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
-            <div class="card">
-              <img src="assets/img/gridhaus.avif" class="card-img-top img-fluid" alt="...">
-              <div class="card-body">
-                <p class="card-text">Contenu de la carte</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
-            <div class="card">
-              <img src="assets/img/gridhaus.avif" class="card-img-top img-fluid" alt="...">
-              <div class="card-body">
-                <p class="card-text">Contenu de la carte</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
-            <div class="card">
-              <img src="assets/img/gridhaus.avif" class="card-img-top img-fluid" alt="...">
-              <div class="card-body">
-                <p class="card-text">Contenu de la carte</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
-            <div class="card">
-              <img src="assets/img/gridhaus.avif" class="card-img-top img-fluid" alt="...">
-              <div class="card-body">
-                <p class="card-text">Contenu de la carte</p>
-              </div>
-            </div>
-          </div>
-          <!-- Vous pouvez ajouter d'autres éléments responsifs ici -->
         </div>
       </div>
     </div>

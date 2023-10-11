@@ -25,11 +25,12 @@ import { NftComponent } from './nft/nft.component';
     PhotoComponent,
     GamingComponent,
     PfpsComponent,
-    NftComponent
+    NftComponent,
+
   ],
   imports: [
     CommonModule,
-    PublicRoutingModule
+    PublicRoutingModule,
   ]
 })
 export class PublicModule { }
