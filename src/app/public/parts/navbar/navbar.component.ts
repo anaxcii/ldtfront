@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TokenService} from "../../../_services/token.service";
+import {CartService} from "../../../_services/cart.service";
 
 @Component({
   selector: 'app-navbar',
@@ -7,11 +8,17 @@ import {TokenService} from "../../../_services/token.service";
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit{
+  contenuPanier: { name: string, price: number }[] = [];
 
-  constructor(private tokenService : TokenService) {
+  constructor(
+    private tokenService : TokenService,
+    ) {
   }
-ngOnInit():void {
-}
+  ngOnInit() {
+    const panierData = localStorage.getItem('panier');
+    this.contenuPanier = panierData ? JSON.parse(panierData) : [];
+  }
+
 
 logout():void{
     this.tokenService.clearToken()

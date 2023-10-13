@@ -3,10 +3,10 @@
 
   <div class="container-fluid ">
     <div class="row">
-      <div class="col">
+      <div class="col-5">
 
         <div class="card">
-          <img src="{{nft.image}}" class="card-img-top" alt="...">
+          <img src="{{nft.image}}" >
         </div>
 
         <div class="custom-espace">
@@ -14,7 +14,7 @@
             <div class="card-header">By {{nft.nftgallery.creator.username}}</div>
             <div class="card-body">
               <blockquote class="blockquote mb-0">
-                <p>{{nft.nftgallery.description}}</p>
+                <p class="sm">{{nft.nftgallery.description}}</p>
               </blockquote>
             </div>
           </div>
@@ -22,8 +22,12 @@
 
       </div>
 
-      <div class="col">
-        2 of 2
+      <div class="col-7">
+        <h5>{{nft.nftgallery.name}}</h5>
+        <h2>{{nft.name}}</h2>
+        <h5>{{nft.owner}}</h5>
+        <button class="btn btn-dark" (click)="ajouterAuPanier(nft)">Ajouter au panier</button>
+
       </div>
     </div>
   </div>

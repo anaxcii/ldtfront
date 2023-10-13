@@ -29,7 +29,7 @@
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
             <li><a class="dropdown-item" href="/user" *ngIf="isUserLoggedIn()">Profil</a></li>
             <li>
-              <a class="dropdown-item" (click)="logout()" *ngIf="isUserLoggedIn(); else showLogin">Se déconnecter</a>
+              <button class="dropdown-item" (click)="logout()" *ngIf="isUserLoggedIn(); else showLogin">Se déconnecter</button>
             </li>
             <ng-template #showLogin>
               <li>
@@ -70,9 +70,10 @@
   </div>
   <div class="offcanvas-body">
     <ul>
-      <li>Produit 1</li>
-      <li>Produit 2</li>
-      <li>Produit 3</li>
+      <li *ngFor="let item of contenuPanier">
+        <p>{{ item.name }}</p>
+        <p>{{ item.price }}</p>
+      </li>
     </ul>
   </div>
 </div>

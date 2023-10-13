@@ -5,6 +5,7 @@ export interface Nft
   price: number,
   image: string,
   nftgallery: {
+    name:string,
     description: string,
     creator:{
       username:string
@@ -13,5 +14,5 @@ export interface Nft
   owner: |any,
   mintdate:string,
   on_sale: boolean,
-  transaction: string
+  transaction: string,
 }

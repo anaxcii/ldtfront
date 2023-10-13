@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {NavbarComponent} from "./public/parts/navbar/navbar.component";
 import {TokenInterceptorProvider} from "./_helpers/token.interceptor";
+import {CartService} from "./_services/cart.service";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import {TokenInterceptorProvider} from "./_helpers/token.interceptor";
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [TokenInterceptorProvider],
+  providers: [TokenInterceptorProvider , CartService],
   exports: [
   ],
   bootstrap: [AppComponent]
