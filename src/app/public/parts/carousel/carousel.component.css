@@ -5,7 +5,9 @@
   border: none;
   margin: 0;
   padding: 0;
-  background: none;
+  background-color: black;
+  border-radius: 15%;
+  transition: transform 0.4s ease;
 }
 img{
   border-radius: 15%;
@@ -13,6 +15,12 @@ img{
 .custom-btn{
 
 }
+
+.card:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
 
 
 

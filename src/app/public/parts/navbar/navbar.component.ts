@@ -16,4 +16,7 @@ ngOnInit():void {
 logout():void{
     this.tokenService.clearToken()
 }
+  isUserLoggedIn(): boolean {
+    return this.tokenService.isLogged();
+  }
 }
