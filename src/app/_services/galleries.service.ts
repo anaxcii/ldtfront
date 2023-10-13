@@ -7,7 +7,7 @@ import {Gallery} from "../_interfaces/gallery";
   providedIn: 'root'
 })
 export class GalleriesService {
-  apiUrl: string = 'http://51.254.112.67/api/galleries';
+  apiUrl: string = 'https://gaetanthomas.tech/api/galleries';
   constructor(private http: HttpClient) { }
 
   getGalleries(id: number): Observable<Gallery[]> {

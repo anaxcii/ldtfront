@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class AuthService {
-  apiUrl: string = 'http://51.254.112.67/auth';
+  apiUrl: string = 'https://gaetanthomas.tech/auth';
   constructor(private http: HttpClient) { }
 
   login(credentials: ICredential):Observable<IToken> {

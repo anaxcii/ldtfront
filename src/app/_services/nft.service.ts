@@ -9,7 +9,7 @@ import {Gallery} from "../_interfaces/gallery";
   providedIn: 'root'
 })
 export class NftService {
-  apiUrl: string = 'http://51.254.112.67/api/nfts';
+  apiUrl: string = 'https://gaetanthomas.tech/api/nfts';
   constructor(private http: HttpClient) { }
 
   getNft(id:number): Observable<Nft[]> {

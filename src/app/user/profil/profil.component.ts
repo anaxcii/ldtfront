@@ -13,10 +13,6 @@ export class ProfilComponent implements OnInit{
   constructor(private http: HttpClient) {
   }
   ngOnInit():void {
-    this.http.get('http://51.254.112.67/api/users').subscribe(
-      data => console.log(data),
-      err => console.error(err)
-    )
   }
 
 }
