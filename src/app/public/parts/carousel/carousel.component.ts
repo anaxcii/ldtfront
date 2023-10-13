@@ -4,14 +4,13 @@ import {GalleriesService} from "../../../_services/galleries.service";
 import {Gallery} from "../../../_interfaces/gallery";
 
 
-
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.css']
 })
 export class CarouselComponent implements OnInit {
-  gallery!:Gallery;
+  gallery:Gallery[] = []
 
   constructor(
     private route: ActivatedRoute,
@@ -20,7 +19,7 @@ export class CarouselComponent implements OnInit {
   ngOnInit(): void {
     this.galleriesService.getAllGalleries().subscribe((data: any) => {
       console.log("Gallery",data);
-      this.gallery = data;
+      this.gallery = data['hydra:member'];
     });
 
   }
