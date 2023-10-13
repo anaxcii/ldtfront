@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Gallery} from "../../interfaces/gallery";
+import {Gallery} from "../../_interfaces/gallery";
 import {ActivatedRoute} from "@angular/router";
-import {GalleriesService} from "../../services/galleries.service";
-import {NftService} from "../../services/nft.service";
-import {Nft} from "../../interfaces/nft";
-
-
+import {GalleriesService} from "../../_services/galleries.service";
+import {NftService} from "../../_services/nft.service";
+import {Nft} from "../../_interfaces/nft";
 
 
 @Component({

@@ -4,7 +4,12 @@ export interface Nft
   name: string,
   price: number,
   image: string,
-  nftgallery: |any,
+  nftgallery: {
+    description: string,
+    creator:{
+      username:string
+    }
+  },
   owner: |any,
   mintdate:string,
   on_sale: boolean,

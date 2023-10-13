@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { Observable } from "rxjs";
-import {Nft} from "../interfaces/nft";
-import {Gallery} from "../interfaces/gallery";
+import {Nft} from "../_interfaces/nft";
+import {Gallery} from "../_interfaces/gallery";
 
 
 @Injectable({

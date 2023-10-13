@@ -24,10 +24,10 @@
           <a href="#"><img src="assets/img/money.svg" class="nav-link me-5 d-none d-lg-block"></a>
         </li>
         <li class="nav-item dropdown">
-          <a href="/auth"><img src="assets/img/user.svg" class="nav-link me-5 d-none d-lg-block"></a>
+          <a href="/user"><img src="assets/img/user.svg" class="nav-link me-5 d-none d-lg-block"></a>
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-            <li><a class="dropdown-item" href="auth/login">Profil</a></li>
-            <li><a class="dropdown-item" href="auth/logout">Se déconnecter</a></li>
+            <li><a class="dropdown-item" href="/user">Profil</a></li>
+            <li><a class="dropdown-item" (click)="logout()">Se déconnecter</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Aide</a></li>
           </ul>

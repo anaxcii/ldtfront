@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
-import {PublicRoutingModule} from "./public-rooting.module";
-import {NavbarComponent} from "./parts/navbar/navbar.component";
+import {PublicRoutingModule} from "./public-routing.module";
 import {FooterComponent} from "./parts/footer/footer.component";
 import {CarouselComponent} from "./parts/carousel/carousel.component";
 import {CollectionComponent} from "./collection/collection.component";
@@ -16,7 +15,6 @@ import { NftComponent } from './nft/nft.component';
 @NgModule({
   declarations: [
     HomeComponent,
-    NavbarComponent,
     FooterComponent,
     CarouselComponent,
     CollectionComponent,

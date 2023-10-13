@@ -1,12 +1,23 @@
-<app-navbar></app-navbar>
+
+<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img src="{{ gallery.image }}" class="img-fluid w-100">
+      </div>
+    </div>
+  </div>
+</div>
 
 <section>
   <div class=" custom-banner">
     <img src="{{ gallery.banner_image }}" class="img-fluid w-100">
   </div>
+  <a  data-bs-toggle="modal" data-bs-target="#Modal">
   <div class="collection-photo">
     <img src="{{ gallery.image }}" class="img-fluid img-thumbnail custom-photo">
   </div>
+  </a>
   <div class="container-fluid custom-container">
     <p class="nom-collection">{{ gallery.name }}</p>
     <p class="nom-createur">{{ gallery.creator.username }}</p>
@@ -18,7 +29,7 @@
       <div class="p-2">Chain</div>
       <div class="p-2 custom-info">Ethereum</div>
       <div class="p-2">Category</div>
-      <div class="p-2 custom-infol">{{ gallery.category}}</div>
+      <a href="/category/{{ gallery.category | lowercase }}"><div class="p-2 custom-infol">{{ gallery.category}}</div></a>
     </div>
     <p class="description">{{gallery.description}}</p>
   </div>
