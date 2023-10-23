@@ -3,7 +3,10 @@ export interface Nft
   id: number,
   name: string,
   price: number,
-  image: string,
+  image: {
+    id:number,
+    imageUrl:string
+  },
   nftgallery: {
     name:string,
     description: string,

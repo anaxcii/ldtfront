@@ -6,7 +6,6 @@ import {HttpClientModule} from "@angular/common/http";
 import {NavbarComponent} from "./public/parts/navbar/navbar.component";
 import {TokenInterceptorProvider} from "./_helpers/token.interceptor";
 
-
 @NgModule({
   declarations: [
     AppComponent,
