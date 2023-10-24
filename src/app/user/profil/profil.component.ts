@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {IUser} from "../../_interfaces/user";
+import {UserService} from "../../_services/user.service";
 
 
 
@@ -10,9 +11,14 @@ import {HttpClient} from "@angular/common/http";
 })
 export class ProfilComponent implements OnInit{
 
-  constructor(private http: HttpClient) {
-  }
-  ngOnInit():void {
-  }
+    user: IUser | null = null;
+
+    constructor(private userService: UserService) { }
+    ngOnInit(): void {
+        this.userService.getcurrentUser().subscribe((user: IUser) => {
+            this.user = user;
+            console.log(user);
+        });
+    }
 
 }

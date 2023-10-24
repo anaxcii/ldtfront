@@ -11,27 +11,35 @@
             <div class="col-md-6 col-lg-7 d-flex align-items-center">
               <div class="card-body p-4 p-lg-5 text-black">
 
-                <form>
-                  <h5 class="fw-normal mb-3 pb-3">Créer un compte</h5>
+                <form #f="ngForm" (ngSubmit)="onSubmit()">
+                <h5 class="fw-normal mb-3 pb-3">Créer un compte</h5>
                   <a href="/" class="btn btn-close position-absolute top-0 end-0"></a>
+
                   <div class="form-outline mb-4">
-                    <input type="email" id="form2Example18" class="form-control form-control-lg" >
-                    <label class="form-label" for="form2Example17">Email</label>
+                    <input type="email" id="email" class="form-control form-control-lg" [(ngModel)]="form.email" #email="ngModel" [ngModelOptions]="{standalone: true}" required>
+                    <label class="form-label" for="email">Email</label>
+                    <div class="text-danger" *ngIf="email.errors && f.submitted">
+                      Veuillez saisir une email
+                    </div>
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input type="email" id="form2Example17" class="form-control form-control-lg" >
-                    <label class="form-label" for="form2Example17">Nom d'utilisateur</label>
+                    <input type="text" id="username" name="username" class="form-control form-control-lg" [(ngModel)]="form.username" #username="ngModel" [ngModelOptions]="{standalone: true}" required>
+                    <label class="form-label" for="username">Nom d'utilisateur</label>
+                    <div class="text-danger" *ngIf="username.errors && f.submitted">
+                      Veuillez saisir un nom d'utilisateur
+                    </div>
                   </div>
-
 
                   <div class="form-outline mb-4">
-                    <input type="password" id="form2Example27" class="form-control form-control-lg" >
-                    <label class="form-label" for="form2Example27">Mot de passe</label>
+                    <input type="password" id="plainPassword" name="plainPassword" class="form-control form-control-lg" [(ngModel)]="form.plainPassword" #plainPassword="ngModel" [ngModelOptions]="{standalone: true}" required>
+                    <label class="form-label" for="plainPassword">Mot de passe</label>
+                    <div class="text-danger" *ngIf="plainPassword.errors && f.submitted">
+                      Veuillez saisir un mot de passe
+                    </div>
                   </div>
-
                   <div class="pt-1 mb-4">
-                    <button class="btn btn-dark btn-lg btn-block" type="button">Créer</button>
+                    <button class="btn btn-dark btn-lg btn-block" type="submit">Créer</button>
                   </div>
 
                   <p class="mb-5 pb-lg-2" style="color: #393f81;">Déja un compte ?
