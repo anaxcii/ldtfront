@@ -12,7 +12,7 @@ export interface Gallery
     username :string,
   }
   dropdate: string,
-  banner_image: {
+  bannerImage: {
     id:number
     imageUrl:string
   }
