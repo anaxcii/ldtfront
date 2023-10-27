@@ -24,6 +24,13 @@ export class CollectionComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
+    this.userService.getcurrentUser().subscribe((user: any) => {
+      if (user && user.username === this.gallery.creator.username) {
+        this.isOwner = true;
+      }
+    });
+
     let id = parseInt(this.route.snapshot.paramMap.get('id') || '');
     this.galleriesService.getGalleries(id).subscribe((data: any) => {
       console.log("Gallery", data);
@@ -34,10 +41,5 @@ export class CollectionComponent implements OnInit {
       this.nfts = data['hydra:member'];
     });
 
-    this.userService.getcurrentUser().subscribe((user: any) => {
-      if (user && user.username === this.gallery.creator.username) {
-        this.isOwner = true;
-      }
-    });
   }
 }
