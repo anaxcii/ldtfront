@@ -7,7 +7,12 @@ export interface IUser {
   lastname: string,
   birth: string,
   address: string,
-  galleries: [],
+  galleries: {
+    image: {
+      id:number,
+      imageUrl:string
+    }
+  },
   money: string,
   nfts: [],
   transactions: [],

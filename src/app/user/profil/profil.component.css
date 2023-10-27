@@ -1,0 +1,61 @@
+.custom-banner {
+  max-height: 320px;
+  overflow: hidden; /* Cache tout ce qui dépasse la hauteur maximale */
+}
+
+a {
+  text-decoration:none;
+  color: black;
+}
+
+.custom-photo{
+  margin-top: -10.5%;
+  margin-left: 2%;
+  width: 12%;
+  border-radius: 20px;
+}
+.photo{
+  padding-bottom: 2%;
+}
+.nom{
+  font-size: 200%;
+  font-weight: bold;
+  padding-left: 0.5%;
+}
+.custom-container{
+  margin-top: -2%;
+  padding-left: 2%;
+}
+
+
+.section-divider {
+  margin-top: 3%;
+  border-bottom: 1px;
+}
+
+@media all and (max-width: 1000px) {
+  .custom-photo {
+    width: 20%;
+    margin-top: -15%;
+  }
+}
+
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  cursor: inherit;
+  display: block;
+}
