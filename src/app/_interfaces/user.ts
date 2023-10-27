@@ -8,11 +8,13 @@ export interface IUser {
   birth: string,
   address: string,
   galleries: {
+    id: number;
+    name: string;
     image: {
-      id:number,
-      imageUrl:string
-    }
-  },
+      id: number;
+      imageUrl: string;
+    };
+  }[];
   money: string,
   nfts: [],
   transactions: [],

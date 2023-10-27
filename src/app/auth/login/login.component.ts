@@ -14,7 +14,8 @@ export class LoginComponent implements OnInit{
   form:ICredential = {
     username: '',
     password : ''
-  }
+  };
+  errorMessage: string = '';
 
   constructor(
     private authService: AuthService,
@@ -30,7 +31,11 @@ export class LoginComponent implements OnInit{
       data => {
         this.tokenService.saveToken(data.token)
       },
-      err => console.log(err)
+      err => {
+        this.errorMessage = "Nom d'utilisateur ou Mot de passe invalide"; // Définissez le message d'erreur
+        this.form.password = ''; // Supprimez le mot de passe saisi
+        console.log(err);
+      }
     )
   }
 }

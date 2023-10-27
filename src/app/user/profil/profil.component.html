@@ -1,16 +1,105 @@
-<section>
+<section xmlns="http://www.w3.org/1999/html">
   <div class=" custom-banner">
     <img src="assets/img/azukibanner.avif" class="img-fluid w-100">
   </div>
-  <a  data-bs-toggle="modal" data-bs-target="#Modal">
+
     <div class="photo">
-      <span class="btn btn-file">
-      <img src="assets/img/azuki.avif" class="img-fluid img-thumbnail custom-photo"><input type="file">
-      </span>
+      <img src="assets/img/azuki.avif" class="img-fluid img-thumbnail custom-photo">
     </div>
-  </a>
+
   <div class="container-fluid custom-container">
-    <p class="nom">TattyJossy</p>
+    <div class="row">
+    <div class="col-11">
+      <p class="nom">TattyJosy</p>
+    </div>
+    <div class="col-1">
+      <div class="dropdown">
+        <button class="btn" type="button" data-bs-toggle="dropdown">
+          <img src="assets/img/three-dots.svg" class=" img-fluid">
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Paramètres</a></li>
+          <li><a class="dropdown-item" href="#">Dashboard</a></li>
+        </ul>
+      </div>
+    </div>
+    </div>
+    <p class="description">Voici la description de TattyJosy</p>
   </div>
   <hr class="section-divider">
+</section>
+
+<section>
+  <div class="container-fluid">
+
+    <div class="sticky-nav">
+      <div class="container-fluid">
+        <div class="row custom-row">
+          <div class="col-2">
+
+          </div>
+          <div class="col-6">
+
+            <form class="d-flex custom-search-form me-5" role="search">
+              <input class="custom-search-input" type="search" placeholder="Recherche par nom" aria-label="Search">
+            </form>
+          </div>
+
+          <div class="col-lg-2"></div>
+
+          <div class="col-1">
+            <div class="dropdown">
+              <button class="btn btn-custom dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                Tri
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Moin cher au plus cher</a></li>
+                <li><a class="dropdown-item" href="#">Plus cher au moins cher</a></li>
+                <li><a class="dropdown-item" href="#">Récement vendu</a></li>
+                <li><a class="dropdown-item" href="#">Récemment créer</a></li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+        <button class="btn custom-tri"><img src="assets/img/tri.svg" class="img-fluid"></button>
+        <div class="card sticky-side">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <p>Mes Collections</p>
+            </li>
+            <li class="list-group-item">
+              <p>Mes NFTs</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
+        <div class="row">
+          <ng-container *ngIf="user">
+            <div *ngFor="let gallery of user.galleries" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3 ">
+              <a [routerLink]="'/collection/' + gallery.id">
+                <div class="card">
+                  <img [src]="gallery.image.imageUrl" class="card-img-top img-fluid card-photo" alt="...">
+                  <div class="card-body">
+                    <p class="card-text">{{gallery.name}}</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
 </section>

@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {Gallery} from "../../_interfaces/gallery";
-import {ActivatedRoute} from "@angular/router";
-import {GalleriesService} from "../../_services/galleries.service";
-import {NftService} from "../../_services/nft.service";
-import {Nft} from "../../_interfaces/nft";
-
+import { Component, OnInit } from '@angular/core';
+import { Gallery } from "../../_interfaces/gallery";
+import { ActivatedRoute } from "@angular/router";
+import { GalleriesService } from "../../_services/galleries.service";
+import { NftService } from "../../_services/nft.service";
+import { Nft } from "../../_interfaces/nft";
+import {UserService} from "../../_services/user.service";
 
 @Component({
   selector: 'app-collection',
@@ -12,25 +12,32 @@ import {Nft} from "../../_interfaces/nft";
   styleUrls: ['./collection.component.css']
 })
 export class CollectionComponent implements OnInit {
-  gallery!:Gallery;
-  nfts!:Nft[];
+  gallery!: Gallery;
+  nfts!: Nft[];
+  isOwner = false;
 
   constructor(
     private route: ActivatedRoute,
     private galleriesService: GalleriesService,
-    private nftService: NftService
+    private nftService: NftService,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
     let id = parseInt(this.route.snapshot.paramMap.get('id') || '');
     this.galleriesService.getGalleries(id).subscribe((data: any) => {
-      console.log("Gallery",data);
+      console.log("Gallery", data);
       this.gallery = data;
     });
     this.nftService.getNftsByGalleries(id).subscribe((data: any) => {
-      console.log("NFT",data);
+      console.log("NFT", data);
       this.nfts = data['hydra:member'];
     });
 
-  };
+    this.userService.getcurrentUser().subscribe((user: any) => {
+      if (user && user.username === this.gallery.creator.username) {
+        this.isOwner = true;
+      }
+    });
+  }
 }

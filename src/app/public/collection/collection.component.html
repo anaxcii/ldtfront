@@ -1,4 +1,3 @@
-
 <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -13,13 +12,28 @@
   <div class=" custom-banner">
     <img src="{{ gallery.bannerImage.imageUrl }}" class="img-fluid w-100">
   </div>
-  <a  data-bs-toggle="modal" data-bs-target="#Modal">
-  <div class="collection-photo">
-    <img src="{{ gallery.image.imageUrl }}" class="img-fluid img-thumbnail custom-photo">
-  </div>
+  <a data-bs-toggle="modal" data-bs-target="#Modal">
+    <div class="collection-photo">
+      <img src="{{ gallery.image.imageUrl }}" class="img-fluid img-thumbnail custom-photo">
+    </div>
   </a>
   <div class="container-fluid custom-container">
-    <p class="nom-collection">{{ gallery.name }}</p>
+    <div class="row">
+      <div class="col-11">
+        <p class="nom-collection">{{ gallery.name }}</p>
+      </div>
+      <div class="col-1">
+        <div class="dropdown" *ngIf="isOwner">
+          <button class="btn" type="button" data-bs-toggle="dropdown">
+            <img src="assets/img/three-dots.svg" class=" img-fluid">
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/modify-galerie/{{gallery.id}}">Modifier</a></li>
+            <li><a class="dropdown-item" href="/delete-galerie/{{gallery.id}}">Suprimer</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <p class="nom-createur">{{ gallery.creator.username }}</p>
     <div class="d-flex flex-wrap">
       <div class="p-2">Items</div>
@@ -29,10 +43,13 @@
       <div class="p-2">Chain</div>
       <div class="p-2 custom-info">Ethereum</div>
       <div class="p-2">Category</div>
-      <a href="/category/{{ gallery.category | lowercase }}"><div class="p-2 custom-infol">{{ gallery.category}}</div></a>
+      <a href="/category/{{ gallery.category | lowercase }}">
+        <div class="p-2 custom-infol">{{ gallery.category}}</div>
+      </a>
     </div>
     <p class="description">{{gallery.description}}</p>
   </div>
+
   <hr class="section-divider">
 </section>
 
@@ -61,8 +78,8 @@
                 Tri
               </button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Moin chère au plus chère</a></li>
-                <li><a class="dropdown-item" href="#">Plus chère au moins chère</a></li>
+                <li><a class="dropdown-item" href="#">Moin cher au plus cher</a></li>
+                <li><a class="dropdown-item" href="#">Plus cher au moins cher</a></li>
                 <li><a class="dropdown-item" href="#">Récement vendu</a></li>
                 <li><a class="dropdown-item" href="#">Récemment créer</a></li>
               </ul>
@@ -94,7 +111,7 @@
                     <input type="number" class="form-control" id="maxValue" placeholder="Max">
                   </div>
                 </div>
-                  <div class="row">
+                <div class="row">
                   <div class="col-md-4 ">
                     <button class="btn btn-dark" id="applyButton">Appliquer</button>
                   </div>

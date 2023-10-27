@@ -12,11 +12,12 @@
               <div class="card-body p-4 p-lg-5 text-black">
 
                 <form #f="ngForm" (ngSubmit)="onSubmit()">
-                <h5 class="fw-normal mb-3 pb-3">Créer un compte</h5>
+                  <h5 class="fw-normal mb-3 pb-3">Créer un compte</h5>
                   <a href="/" class="btn btn-close position-absolute top-0 end-0"></a>
 
                   <div class="form-outline mb-4">
-                    <input type="email" id="email" class="form-control form-control-lg" [(ngModel)]="form.email" #email="ngModel" [ngModelOptions]="{standalone: true}" required>
+                    <input type="email" id="email" class="form-control form-control-lg" [(ngModel)]="form.email"
+                           #email="ngModel" [ngModelOptions]="{standalone: true}" required>
                     <label class="form-label" for="email">Email</label>
                     <div class="text-danger" *ngIf="email.errors && f.submitted">
                       Veuillez saisir une email
@@ -24,7 +25,9 @@
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input type="text" id="username" name="username" class="form-control form-control-lg" [(ngModel)]="form.username" #username="ngModel" [ngModelOptions]="{standalone: true}" required>
+                    <input type="text" id="username" name="username" class="form-control form-control-lg"
+                           [(ngModel)]="form.username" #username="ngModel" [ngModelOptions]="{standalone: true}"
+                           required>
                     <label class="form-label" for="username">Nom d'utilisateur</label>
                     <div class="text-danger" *ngIf="username.errors && f.submitted">
                       Veuillez saisir un nom d'utilisateur
@@ -32,18 +35,23 @@
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input type="password" id="plainPassword" name="plainPassword" class="form-control form-control-lg" [(ngModel)]="form.plainPassword" #plainPassword="ngModel" [ngModelOptions]="{standalone: true}" required>
+                    <input type="password" id="plainPassword" name="plainPassword" class="form-control form-control-lg"
+                           [(ngModel)]="form.plainPassword" #plainPassword="ngModel"
+                           [ngModelOptions]="{standalone: true}" required>
                     <label class="form-label" for="plainPassword">Mot de passe</label>
                     <div class="text-danger" *ngIf="plainPassword.errors && f.submitted">
                       Veuillez saisir un mot de passe
                     </div>
+                  </div>
+                  <div class="text-danger" *ngIf="errorMessage">
+                    {{ errorMessage }}
                   </div>
                   <div class="pt-1 mb-4">
                     <button class="btn btn-dark btn-lg btn-block" type="submit">Créer</button>
                   </div>
 
                   <p class="mb-5 pb-lg-2" style="color: #393f81;">Déja un compte ?
-                    <a href="/auth/login"style="color: #393f81;">Connecté vous ici</a></p>
+                    <a href="/auth/login" style="color: #393f81;">Connecté vous ici</a></p>
                 </form>
 
               </div>

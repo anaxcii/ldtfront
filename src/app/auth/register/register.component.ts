@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
     plainPassword: '',
     email: ''
   }
+  errorMessage: string = '';
 
   constructor(
     private authService: AuthService,
@@ -35,6 +36,7 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['/auth/login']);
       },
       (error) => {
+        this.errorMessage = "Erreur lors de la création de l'utilisateur";
         console.error('Erreur lors de la création de l\'utilisateur :', error);
         // Gérer les erreurs ici (par exemple, afficher un message d'erreur à l'utilisateur).
       }
