@@ -20,7 +20,9 @@ img{
 }
 
 @media all and (max-width: 1000px) {
-
+  .custom-btn {
+    visibility: hidden;
+  }
   .card-title{
     visibility: hidden;
    }
