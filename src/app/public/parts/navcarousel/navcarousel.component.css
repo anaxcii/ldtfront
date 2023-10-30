@@ -1,3 +1,10 @@
 .text-black {
   color: black;
 }
+
+@media all and (max-width: 500px) {
+  .container{
+    font-size: small;
+  }
+}
+

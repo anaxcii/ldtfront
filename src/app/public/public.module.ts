@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import {PublicRoutingModule} from "./public-routing.module";
 import {FooterComponent} from "./parts/footer/footer.component";
-import {CarouselComponent} from "./parts/carousel/carousel.component";
 import {CollectionComponent} from "./collection/collection.component";
 import {ArtComponent} from "./category/art/art.component";
 import {NavcarouselComponent} from "./parts/navcarousel/navcarousel.component";
@@ -16,7 +15,6 @@ import { NftComponent } from './nft/nft.component';
   declarations: [
     HomeComponent,
     FooterComponent,
-    CarouselComponent,
     CollectionComponent,
     ArtComponent,
     NavcarouselComponent,
