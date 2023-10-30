@@ -1,16 +1,16 @@
-<section xmlns="http://www.w3.org/1999/html">
+<section>
   <div class=" custom-banner">
-    <img src="assets/img/azukibanner.avif" class="img-fluid w-100">
+    <img src="{{user.bannerImage.imageUrl}}" class="img-fluid w-100">
   </div>
 
     <div class="photo">
-      <img src="assets/img/azuki.avif" class="img-fluid img-thumbnail custom-photo">
+      <img src="{{user.image.imageUrl}}" class="img-fluid img-thumbnail custom-photo">
     </div>
 
   <div class="container-fluid custom-container">
     <div class="row">
     <div class="col-11">
-      <p class="nom">TattyJosy</p>
+      <p class="nom">{{user.username}}</p>
     </div>
     <div class="col-1">
       <div class="dropdown">
@@ -20,6 +20,7 @@
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="#">Paramètres</a></li>
           <li><a class="dropdown-item" href="#">Dashboard</a></li>
+          <li><a class="dropdown-item" href="#">Créer une Collection</a></li>
         </ul>
       </div>
     </div>

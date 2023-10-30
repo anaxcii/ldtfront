@@ -36,10 +36,10 @@ export class CollectionComponent implements OnInit {
       console.log("Gallery", data);
       this.gallery = data;
     });
+
     this.nftService.getNftsByGalleries(id).subscribe((data: any) => {
       console.log("NFT", data);
       this.nfts = data['hydra:member'];
     });
-
   }
 }

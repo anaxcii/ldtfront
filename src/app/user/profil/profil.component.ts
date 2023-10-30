@@ -8,7 +8,7 @@ import {Component, OnInit} from "@angular/core";
   styleUrls: ['./profil.component.css']
 })
 export class ProfilComponent implements OnInit {
-  user: IUser | null = null;
+  user!: IUser;
 
   constructor(private userService: UserService) { }
 

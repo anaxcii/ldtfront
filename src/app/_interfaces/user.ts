@@ -18,4 +18,10 @@ export interface IUser {
   money: string,
   nfts: [],
   transactions: [],
+  image: {
+    imageUrl: string;
+  };
+  bannerImage: {
+    imageUrl: string;
+  };
 }
