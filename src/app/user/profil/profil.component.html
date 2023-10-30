@@ -1,16 +1,16 @@
 <section>
   <div class=" custom-banner">
-    <img src="{{user.bannerImage.imageUrl}}" class="img-fluid w-100">
+    <img [src]="user?.bannerImage?.imageUrl || 'assets/img/defaut.jpg'" class="img-fluid w-100">
   </div>
 
     <div class="photo">
-      <img src="{{user.image.imageUrl}}" class="img-fluid img-thumbnail custom-photo">
+      <img [src]="user?.image?.imageUrl || 'assets/img/profil.jpg'" class="img-fluid img-thumbnail custom-photo">
     </div>
 
   <div class="container-fluid custom-container">
     <div class="row">
     <div class="col-11">
-      <p class="nom">{{user.username}}</p>
+      <p class="nom">{{user?.username}}</p>
     </div>
     <div class="col-1">
       <div class="dropdown">
@@ -25,7 +25,7 @@
       </div>
     </div>
     </div>
-    <p class="description">Voici la description de TattyJosy</p>
+    <p class="description">{{user?.description}}</p>
   </div>
   <hr class="section-divider">
 </section>

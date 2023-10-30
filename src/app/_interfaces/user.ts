@@ -24,4 +24,5 @@ export interface IUser {
   bannerImage: {
     imageUrl: string;
   };
+  description: string,
 }
