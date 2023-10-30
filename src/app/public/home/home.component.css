@@ -2,23 +2,22 @@ section{
   padding-bottom: 5%;
 }
 
-.card-title{
+.custom-title{
   color: white;
 }
-.card{
+.custom-card{
   border: none;
   margin: 0;
   padding: 0;
   background-color: black;
-  border-radius: 15%;
   transition: transform 0.4s ease;
 }
-img{
+.custom-img{
   border-radius: 15%;
 }
 
 
-.card:hover {
+.custom-card:hover {
   transform: scale(1.1);
   opacity: 0.9;
 }
@@ -28,13 +27,32 @@ img{
   width: 15%;
 }
 
+.cc{
+  margin-bottom: 5%;
+}
+
+.cp{
+  height: 301.95px;
+}
+
+a{
+  text-decoration: none;
+}
+
+
 
 @media all and (max-width: 1000px) {
+
+  .cp{
+  }
   .custom-btn {
     display: none;
   }
-  .card-title{
+  .custom-title{
     display: none;
+  }
+  .tb{
+    width: 30%;
   }
 }
 
@@ -43,10 +61,9 @@ img{
   .mobile{
     height: 250%;
   }
-  .tb{
-    width: 30%;
-  }
 }
+
+
 
 
 
