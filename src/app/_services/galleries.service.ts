@@ -14,6 +14,14 @@ export class GalleriesService {
     return this.http.get<Gallery[]>(this.apiUrl +'/'+ id );
   }
 
+  createGalleries(gallery: Gallery): Observable<Gallery> {
+    return this.http.post<Gallery>(this.apiUrl, gallery);
+  }
+
+  deleteGalleries(id: number): Observable<Gallery[]> {
+    return this.http.delete<Gallery[]>(this.apiUrl +'/'+ id );
+  }
+
   getAllGalleries(): Observable<Gallery[]> {
     return this.http.get<Gallery[]>(this.apiUrl);
   }

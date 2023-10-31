@@ -27,7 +27,7 @@
         <h2>{{nft.name}}</h2>
         <h5>{{nft.owner}}</h5>
         <button class="btn btn-dark" (click)="ajouterAuPanier(nft)">Ajouter au panier</button>
-
+        <button class="btn" (click)="deleteNFT()" *ngIf="isOwner">Suprimer</button>
       </div>
     </div>
   </div>

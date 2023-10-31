@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Gallery } from "../../_interfaces/gallery";
-import { ActivatedRoute } from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import { GalleriesService } from "../../_services/galleries.service";
 import { NftService } from "../../_services/nft.service";
 import { Nft } from "../../_interfaces/nft";
@@ -20,7 +20,8 @@ export class CollectionComponent implements OnInit {
     private route: ActivatedRoute,
     private galleriesService: GalleriesService,
     private nftService: NftService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -41,5 +42,16 @@ export class CollectionComponent implements OnInit {
       console.log("NFT", data);
       this.nfts = data['hydra:member'];
     });
+  }
+
+  deleteGallery() {
+    if (this.isOwner) {
+      const id = parseInt(this.route.snapshot.paramMap.get('id') || '');
+      this.galleriesService.deleteGalleries(id).subscribe(() => {
+        this.router.navigate(['/user']);
+      });
+    } else {
+      console.log('Vous n\'avez pas les droits');
+    }
   }
 }
