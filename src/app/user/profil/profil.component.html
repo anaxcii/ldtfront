@@ -1,29 +1,133 @@
+<section id="gallery">
+  <div class="modal fade" id="collection" tabindex="-1" aria-labelledby="collectionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="collectionModalLabel">Nouvelle Collection</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="nomcollection" placeholder="Nom">
+            <label for="nomcollection">Nom</label>
+          </div>
+          <div class="form-floating mb-3">
+            <select class="form-select" id="floatingSelect" aria-label="Choissisez une catégorie">
+              <option selected>Choissisez une catégorie</option>
+              <option value="1">Art</option>
+              <option value="2">PFPs</option>
+              <option value="3">Gaming</option>
+              <option value="4">Photographie</option>
+            </select>
+            <label for="floatingSelect">Catégorie</label>
+          </div>
+          <div class="form-floating mb-3">
+            <textarea class="form-control" placeholder="Description" id="floatingTextarea"></textarea>
+            <label for="floatingTextarea">Description</label>
+          </div>
+          <div class="mb-3">
+            <label for="image" class="form-label">Choisissez une image</label>
+            <input class="form-control" type="file" id="image">
+          </div>
+          <div class="mb-3">
+            <label for="banner" class="form-label">Choisissez une bannière</label>
+            <input class="form-control" type="file" id="banner">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark">Créer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="user">
+  <div class="modal fade" id="profil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Paramètres du compte</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="username" placeholder="username">
+            <label for="username">{{user?.username}}</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="email" placeholder="email">
+            <label for="email">{{user?.email}}</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="mdp" placeholder="mdp">
+            <label for="mdp">Mot de passe</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="firstname" placeholder="Prénom">
+            <label for="firstname">{{user?.firstname|| "Prénom"}}</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="lastname" placeholder="Nom">
+            <label for="lastname">{{user?.lastname || "Nom"}}</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="adresse" placeholder="Adresse">
+            <label for="adresse">{{user?.address || "Adresse"}}</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="date" class="form-control" id="birth" placeholder="birth">
+            <label for="birth">{{user?.birth || "Date de naissance"}}</label>
+          </div>
+          <div class="mb-3">
+            <label for="image" class="form-label">Choisissez une image</label>
+            <input class="form-control" type="file" id="userimage">
+          </div>
+          <div class="mb-3">
+            <label for="banner" class="form-label">Choisissez une bannière</label>
+            <input class="form-control" type="file" id="userbanner">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark">Créer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <section>
   <div class=" custom-banner">
     <img [src]="user?.bannerImage?.imageUrl || 'assets/img/defaut.jpg'" class="img-fluid w-100">
   </div>
 
-    <div class="photo">
-      <img [src]="user?.image?.imageUrl || 'assets/img/profil.jpg'" class="img-fluid img-thumbnail custom-photo">
-    </div>
+  <div class="photo">
+    <img [src]="user?.image?.imageUrl || 'assets/img/profil.jpg'" class="img-fluid img-thumbnail custom-photo">
+  </div>
 
   <div class="container-fluid custom-container">
     <div class="row">
-    <div class="col-11">
-      <p class="nom">{{user?.username}}</p>
-    </div>
-    <div class="col-1">
-      <div class="dropdown">
-        <button class="btn" type="button" data-bs-toggle="dropdown">
-          <img src="assets/img/three-dots.svg" class=" img-fluid">
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Paramètres</a></li>
-          <li><a class="dropdown-item" href="#">Dashboard</a></li>
-          <li><a class="dropdown-item" href="#">Créer une Collection</a></li>
-        </ul>
+      <div class="col-11">
+        <p class="nom">{{user?.username}}</p>
       </div>
-    </div>
+      <div class="col-1">
+        <div class="dropdown">
+          <button class="btn" type="button" data-bs-toggle="dropdown">
+            <img src="assets/img/three-dots.svg" class=" img-fluid">
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#profil">Paramètres</button>
+            </li>
+            <li><a class="dropdown-item" href="#">Dashboard</a></li>
+            <li>
+              <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#collection">Créer une Collection
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
     <p class="description">{{user?.description}}</p>
   </div>
