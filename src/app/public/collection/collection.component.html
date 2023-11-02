@@ -2,53 +2,53 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <img src="{{ gallery.image.imageUrl }}" class="img-fluid w-100">
+        <img *ngIf="gallery" [src]="gallery.image.imageUrl" class="img-fluid w-100" alt="">
       </div>
     </div>
   </div>
 </div>
 
 <section>
-  <div class=" custom-banner">
-    <img src="{{ gallery.bannerImage.imageUrl }}" class="img-fluid w-100">
+  <div class="custom-banner">
+    <img *ngIf="gallery" [src]="gallery.bannerImage.imageUrl" class="img-fluid w-100">
   </div>
   <a data-bs-toggle="modal" data-bs-target="#Modal">
     <div class="collection-photo">
-      <img src="{{ gallery.image.imageUrl }}" class="img-fluid img-thumbnail custom-photo">
+      <img *ngIf="gallery" [src]="gallery.image.imageUrl" class="img-fluid img-thumbnail custom-photo">
     </div>
   </a>
   <div class="container-fluid custom-container">
     <div class="row">
       <div class="col-11">
-        <p class="nom-collection">{{ gallery.name }}</p>
+        <p class="nom-collection" *ngIf="gallery">{{ gallery.name }}</p>
       </div>
       <div class="col-1">
         <div class="dropdown" *ngIf="isOwner">
           <button class="btn" type="button" data-bs-toggle="dropdown">
-            <img src="assets/img/three-dots.svg" class=" img-fluid">
+            <img src="assets/img/three-dots.svg" class="img-fluid">
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/modify-galerie/{{gallery.id}}">Modifier</a></li>
-            <li><a class="dropdown-item" (click)="deleteGallery()" *ngIf="isOwner">Suprimer</a></li>
-            <li><a class="dropdown-item" href="/create-nft/{{gallery.id}}">Créer un NFT</a></li>
+            <li><a class="dropdown-item" [routerLink]="'/modify-galerie/' + gallery.id">Modifier</a></li>
+            <li><button class="dropdown-item" (click)="deleteGallery()" *ngIf="isOwner">Supprimer</button></li>
+            <li><a class="dropdown-item" [routerLink]="'/create-nft/' + gallery.id">Créer un NFT</a></li>
           </ul>
         </div>
       </div>
     </div>
-    <p class="nom-createur">{{ gallery.creator.username }}</p>
+    <p class="nom-createur" *ngIf="gallery">{{ gallery.creator.username }}</p>
     <div class="d-flex flex-wrap">
       <div class="p-2">Items</div>
-      <div class="p-2 custom-info">{{nfts.length}}</div>
+      <div class="p-2 custom-info" *ngIf="nfts">{{ nfts.length }}</div>
       <div class="p-2">Created</div>
-      <div class="p-2 custom-info">{{ gallery.dropdate | date:'mediumDate' }}</div>
+      <div class="p-2 custom-info" *ngIf="gallery">{{ gallery.dropdate | date:'mediumDate' }}</div>
       <div class="p-2">Chain</div>
       <div class="p-2 custom-info">Ethereum</div>
       <div class="p-2">Category</div>
-      <a href="/category/{{ gallery.category | lowercase }}">
-        <div class="p-2 custom-infol">{{ gallery.category}}</div>
+      <a *ngIf="gallery" [routerLink]="'/category/' + gallery.category | lowercase">
+        <div class="p-2 custom-infol">{{ gallery.category }}</div>
       </a>
     </div>
-    <p class="description">{{gallery.description}}</p>
+    <p class="description" *ngIf="gallery">{{ gallery.description }}</p>
   </div>
 
   <hr class="section-divider">
@@ -81,7 +81,7 @@
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Moin cher au plus cher</a></li>
                 <li><a class="dropdown-item" href="#">Plus cher au moins cher</a></li>
-                <li><a class="dropdown-item" href="#">Récement vendu</a></li>
+                <li><a class="dropdown-item" href="#">Récemment vendu</a></li>
                 <li><a class="dropdown-item" href="#">Récemment créer</a></li>
               </ul>
             </div>
@@ -127,12 +127,12 @@
       <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
         <div class="row">
           <div *ngFor="let nft of nfts" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3 ">
-            <a href="nft/{{nft.id}}">
+            <a [routerLink]="'nft/' + nft.id">
               <div class="card">
-                <img src="{{nft.image.imageUrl}}" class="card-img-top img-fluid" alt="...">
+                <img *ngIf="nft" [src]="nft.image.imageUrl" class="card-img-top img-fluid" alt="...">
                 <div class="card-body">
-                  <p class="card-text">{{nft.name}}</p>
-                  <p class="card-text">{{nft.price}}ETH</p>
+                  <p class="card-text" *ngIf="nft">{{ nft.name }}</p>
+                  <p class="card-text" *ngIf="nft">{{ nft.price }} ETH</p>
                 </div>
               </div>
             </a>
@@ -140,11 +140,5 @@
         </div>
       </div>
     </div>
-
   </div>
-
 </section>
-
-
-
-

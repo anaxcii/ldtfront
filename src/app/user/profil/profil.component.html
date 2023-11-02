@@ -6,37 +6,34 @@
           <h1 class="modal-title fs-5" id="collectionModalLabel">Nouvelle Collection</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="nomcollection" placeholder="Nom">
-            <label for="nomcollection">Nom</label>
+        <form name="CollectionForm" #g="ngForm" (ngSubmit)="CreateGalleryOnSubmit()">
+          <div class="modal-body">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="nomcollection" placeholder="Nom"  [(ngModel)]="CollectionForm.name"
+                     #name="ngModel" [ngModelOptions]="{standalone: true}">
+              <label for="nomcollection">Nom</label>
+            </div>
+            <div class="form-floating mb-3">
+              <select class="form-select" id="floatingSelect" aria-label="Choissisez une catégorie"  [(ngModel)]="CollectionForm.category"
+                      #category="ngModel" [ngModelOptions]="{standalone: true}">
+                <option selected>Choissisez une catégorie</option>
+                <option value="Art">Art</option>
+                <option value="PFPs">PFPs</option>
+                <option value="Gaming">Gaming</option>
+                <option value="Photographie">Photographie</option>
+              </select>
+              <label for="floatingSelect">Catégorie</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input class="form-control" placeholder="Description" id="floatingTextarea" [(ngModel)]="CollectionForm.description"
+                     #description="ngModel" [ngModelOptions]="{standalone: true}">
+              <label for="floatingTextarea">Description</label>
+            </div>
           </div>
-          <div class="form-floating mb-3">
-            <select class="form-select" id="floatingSelect" aria-label="Choissisez une catégorie">
-              <option selected>Choissisez une catégorie</option>
-              <option value="1">Art</option>
-              <option value="2">PFPs</option>
-              <option value="3">Gaming</option>
-              <option value="4">Photographie</option>
-            </select>
-            <label for="floatingSelect">Catégorie</label>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-dark" data-bs-dismiss="modal">Créer</button>
           </div>
-          <div class="form-floating mb-3">
-            <textarea class="form-control" placeholder="Description" id="floatingTextarea"></textarea>
-            <label for="floatingTextarea">Description</label>
-          </div>
-          <div class="mb-3">
-            <label for="image" class="form-label">Choisissez une image</label>
-            <input class="form-control" type="file" id="image">
-          </div>
-          <div class="mb-3">
-            <label for="banner" class="form-label">Choisissez une bannière</label>
-            <input class="form-control" type="file" id="banner">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-dark">Créer</button>
-        </div>
+        </form>
       </div>
     </div>
   </div>
@@ -50,47 +47,53 @@
           <h1 class="modal-title fs-5" id="exampleModalLabel">Paramètres du compte</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="username" placeholder="username">
-            <label for="username">{{user?.username}}</label>
+        <form name="form" #f="ngForm" (ngSubmit)="onSubmit()">
+          <div class="modal-body">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="username" placeholder="username" [(ngModel)]="form.username"
+                     #username="ngModel" [ngModelOptions]="{standalone: true}">
+              <label for="username">{{user?.username}}</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="email" placeholder="email" [(ngModel)]="form.email"
+                     #email="ngModel" [ngModelOptions]="{standalone: true}">
+              <label for="email">{{user?.email}}</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control" id="mdp" placeholder="mdp" [(ngModel)]="form.plainPassword"
+                     #plainPassword="ngModel" [ngModelOptions]="{standalone: true}">
+              <label for="mdp">Mot de passe</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="firstname" placeholder="Prénom" [(ngModel)]="form.firstname"
+                     #firstname="ngModel" [ngModelOptions]="{standalone: true}">
+              <label for="firstname">{{user?.firstname || "Prénom"}}</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="lastname" placeholder="Nom" [(ngModel)]="form.lastname"
+                     #lastname="ngModel" [ngModelOptions]="{standalone: true}">
+              <label for="lastname">{{user?.lastname || "Nom"}}</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input class="form-control" placeholder="Description" id="description" [(ngModel)]="form.description"
+                     #description="ngModel" [ngModelOptions]="{standalone: true}">
+              <label for="description">{{user?.description || "Description"}}</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="adresse" placeholder="Adresse" [(ngModel)]="form.address"
+                     #address="ngModel" [ngModelOptions]="{standalone: true}">
+              <label for="adresse">{{user?.address || "Adresse"}}</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="date" class="form-control" id="birth" placeholder="birth" [(ngModel)]="form.birth"
+                     #birth="ngModel" [ngModelOptions]="{standalone: true}">
+              <label for="birth">{{user?.birth || "Date de naissance"}}</label>
+            </div>
           </div>
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="email" placeholder="email">
-            <label for="email">{{user?.email}}</label>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-dark">Modifier</button>
           </div>
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="mdp" placeholder="mdp">
-            <label for="mdp">Mot de passe</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="firstname" placeholder="Prénom">
-            <label for="firstname">{{user?.firstname|| "Prénom"}}</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="lastname" placeholder="Nom">
-            <label for="lastname">{{user?.lastname || "Nom"}}</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="adresse" placeholder="Adresse">
-            <label for="adresse">{{user?.address || "Adresse"}}</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="date" class="form-control" id="birth" placeholder="birth">
-            <label for="birth">{{user?.birth || "Date de naissance"}}</label>
-          </div>
-          <div class="mb-3">
-            <label for="image" class="form-label">Choisissez une image</label>
-            <input class="form-control" type="file" id="userimage">
-          </div>
-          <div class="mb-3">
-            <label for="banner" class="form-label">Choisissez une bannière</label>
-            <input class="form-control" type="file" id="userbanner">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-dark">Créer</button>
-        </div>
+        </form>
       </div>
     </div>
   </div>

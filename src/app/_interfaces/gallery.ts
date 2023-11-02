@@ -2,18 +2,10 @@ export interface Gallery
 {
   id: number,
   name: string,
-  image: {
-    id:number,
-    imageUrl:string
-  },
+  image: |any,
   description: string,
   category: string,
-  creator: {
-    username :string,
-  }
+  creator: |any,
   dropdate: string,
-  bannerImage: {
-    id:number
-    imageUrl:string
-  }
+  bannerImage: |any
 }

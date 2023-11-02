@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {map, Observable} from "rxjs";
+import {Observable} from "rxjs";
 import {Gallery} from "../_interfaces/gallery";
 
 @Injectable({
@@ -14,7 +14,7 @@ export class GalleriesService {
     return this.http.get<Gallery[]>(this.apiUrl +'/'+ id );
   }
 
-  createGalleries(gallery: Gallery): Observable<Gallery> {
+  createGalleries(gallery: Partial<Gallery>): Observable<Gallery> {
     return this.http.post<Gallery>(this.apiUrl, gallery);
   }
 

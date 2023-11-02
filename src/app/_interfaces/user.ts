@@ -25,4 +25,5 @@ export interface IUser {
     imageUrl: string;
   };
   description: string,
+
 }
