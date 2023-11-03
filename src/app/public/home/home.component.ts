@@ -10,6 +10,7 @@ import {GalleriesService} from "../../_services/galleries.service";
 })
 export class HomeComponent implements OnInit {
   gallery:Gallery[] = []
+  dataLoaded = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -17,9 +18,9 @@ export class HomeComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.galleriesService.getAllGalleries().subscribe((data: any) => {
-      console.log("Gallery",data);
+      console.log("Gallery", data);
       this.gallery = data['hydra:member'];
+      this.dataLoaded = true; // Marquer les données comme chargées
     });
-
   }
 }
