@@ -12,11 +12,11 @@
   <div class="custom-banner">
     <img *ngIf="gallery" [src]="gallery.bannerImage.imageUrl" class="img-fluid w-100">
   </div>
-  <a data-bs-toggle="modal" data-bs-target="#Modal">
-    <div class="collection-photo">
+  <div class="collection-photo">
+    <a data-bs-toggle="modal" data-bs-target="#Modal">
       <img *ngIf="gallery" [src]="gallery.image.imageUrl" class="img-fluid img-thumbnail custom-photo">
-    </div>
-  </a>
+    </a>
+  </div>
   <div class="container-fluid custom-container">
     <div class="row">
       <div class="col-11">
@@ -29,7 +29,9 @@
           </button>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" [routerLink]="'/modify-galerie/' + gallery.id">Modifier</a></li>
-            <li><button class="dropdown-item" (click)="deleteGallery()" *ngIf="isOwner">Supprimer</button></li>
+            <li>
+              <button class="dropdown-item" (click)="deleteGallery()" *ngIf="isOwner">Supprimer</button>
+            </li>
             <li><a class="dropdown-item" [routerLink]="'/create-nft/' + gallery.id">Créer un NFT</a></li>
           </ul>
         </div>

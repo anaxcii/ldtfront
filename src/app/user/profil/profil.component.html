@@ -97,14 +97,6 @@
                      #birth="ngModel" [ngModelOptions]="{standalone: true}">
               <label for="birth">{{user?.birth || "Date de naissance"}}</label>
             </div>
-            <div class="input-group mb-3">
-              <label class="input-group-text" for="photo">Photo</label>
-              <input type="file" class="form-control" id="photop" (change)="onImageFileSelected($event)" accept="image/*">
-            </div>
-            <div class="input-group mb-3">
-              <label class="input-group-text" for="banner">Bannière</label>
-              <input type="file" class="form-control" id="bannerp" (change)="onBannerImageFileSelected($event)">
-            </div>
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-dark">Modifier</button>

@@ -100,7 +100,7 @@ export class ProfilComponent implements OnInit {
         this.CollectionForm = {
           name: "",
           category: "",
-          description: "",
+          description: ""
         };
       },
       (error) => {
