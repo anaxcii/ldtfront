@@ -1,28 +1,38 @@
 import { Injectable } from '@angular/core';
-import {HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {Observable, of} from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-import { GalleriesService } from '../_services/galleries.service';
+import {
+  HttpInterceptor,
+  HttpEvent,
+  HttpHandler,
+  HttpRequest,
+  HttpResponse,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
+import { map, Observable } from 'rxjs';
 
 @Injectable()
 export class ImageInterceptor implements HttpInterceptor {
-  constructor(private galleriesService: GalleriesService) {}
-
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (request.url === 'https://gaetanthomas.tech/api/images') {
-      // Interceptez les requêtes vers votre service d'images
-      return next.handle(request).pipe(
-        switchMap((response: any) => {
-          if (response.filePath) {
-            // Mettez à jour le formulaire de création de galerie
-            this.galleriesService.updateCollectionFormImages(response.filePath);
-            console.log(response.filePath);
+  intercept(
+    req: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
+    // Vérifiez si la requête concerne la création d'une galerie
+    if (req.url.includes('/api/images')) {
+      return next.handle(req).pipe(
+        map((event) => {
+          if (event instanceof HttpResponse && event.body && event.body['@id']) {
+            // Crée une nouvelle réponse avec uniquement la propriété '@id'
+            const id = event.body['@id'];
+            return new HttpResponse({
+              body: id,
+              status: event.status
+            });
           }
-          return of(response); // Retournez 'of(response)' pour créer un observable
+          return event;
         })
       );
     } else {
-      return next.handle(request);
+      // Si la requête ne concerne pas la création d'une galerie, laissez-la passer sans interception.
+      return next.handle(req);
     }
   }
 }
@@ -30,5 +40,5 @@ export class ImageInterceptor implements HttpInterceptor {
 export const ImageInterceptorProvider = {
   provide: HTTP_INTERCEPTORS,
   useClass: ImageInterceptor,
-  multi: true
-}
+  multi: true,
+};

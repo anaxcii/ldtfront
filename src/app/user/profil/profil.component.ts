@@ -3,7 +3,7 @@ import { UserService } from "../../_services/user.service";
 import { IUser } from "../../_interfaces/user";
 import { GalleriesService } from "../../_services/galleries.service";
 import { Gallery } from "../../_interfaces/gallery";
-
+import { ImageService } from "../../_services/image.service";
 
 @Component({
   selector: 'app-profil',
@@ -14,13 +14,18 @@ export class ProfilComponent implements OnInit {
   user?: IUser;
   form: Partial<IUser> = {};
   CollectionForm: Partial<Gallery> = {
-    image: "/api/images/50",
-    bannerImage: "/api/images/50",
     creator: "", // Laissez cette chaîne vide pour le moment
-    dropdate: new Date().toISOString()
+    dropdate: new Date().toISOString(),
   };
 
-  constructor(private userService: UserService, private galleriesService: GalleriesService) {}
+  imageFile: File | null = null; // Ajout de la propriété imageFile pour le fichier image
+  bannerImageFile: File | null = null; // Ajout de la propriété bannerImageFile pour le fichier de la bannière
+
+  constructor(
+    private userService: UserService,
+    private galleriesService: GalleriesService,
+    private imageService: ImageService
+  ) {}
 
   ngOnInit(): void {
     this.userService.getcurrentUser().subscribe((data: IUser) => {
@@ -28,7 +33,6 @@ export class ProfilComponent implements OnInit {
       if (this.user) {
         this.CollectionForm.creator = "/api/users/" + this.user.id;
       }
-
     });
   }
 
@@ -49,19 +53,71 @@ export class ProfilComponent implements OnInit {
 
   CreateGalleryOnSubmit(): void {
     if (this.user) {
-      this.galleriesService.createGalleries(this.CollectionForm).subscribe(
-        (createdGallery: Gallery) => {
-          console.log('Galerie créée :', createdGallery);
-          this.CollectionForm = {  // Réinitialisez CollectionForm
-            name: "",
-            category: "",
-            description: "",
-          };
-        },
-        (error) => {
-          console.error('Erreur lors de la création de la galerie :', error);
-        });
+      if (this.imageFile) {
+        this.uploadImage(this.imageFile);
+      } else {
+        console.error('Veuillez sélectionner une image.');
+      }
     }
   }
 
+  uploadImage(imageFile: File): void {
+    this.imageService.uploadImage(imageFile).subscribe(
+      (imagePath: string) => {
+        this.CollectionForm.image = imagePath;
+
+        if (this.bannerImageFile) {
+          this.uploadBannerImage(this.bannerImageFile);
+        } else {
+          console.error('Veuillez sélectionner une bannière.');
+        }
+      },
+      (error) => {
+        console.error('Erreur lors du téléchargement de l\'image :', error);
+      }
+    );
+  }
+
+  uploadBannerImage(bannerImageFile: File): void {
+    this.imageService.uploadImage(bannerImageFile).subscribe(
+      (bannerImagePath: string) => {
+        this.CollectionForm.bannerImage = bannerImagePath;
+
+        // Appelez la méthode pour créer la galerie ici
+        this.createGallery();
+      },
+      (error) => {
+        console.error('Erreur lors du téléchargement de la bannière :', error);
+      }
+    );
+  }
+
+  createGallery(): void {
+    // Créez la galerie maintenant que les deux images sont téléchargées
+    this.galleriesService.createGalleries(this.CollectionForm).subscribe(
+      (createdGallery: Gallery) => {
+        console.log('Galerie créée :', createdGallery);
+        this.CollectionForm = {
+          name: "",
+          category: "",
+          description: "",
+        };
+      },
+      (error) => {
+        console.error('Erreur lors de la création de la galerie :', error);
+      }
+    );
+  }
+
+  onImageFileSelected(event: any) {
+    if (event.target.files && event.target.files.length > 0) {
+      this.imageFile = event.target.files[0];
+    }
+  }
+
+  onBannerImageFileSelected(event: any) {
+    if (event.target.files && event.target.files.length > 0) {
+      this.bannerImageFile = event.target.files[0];
+    }
+  }
 }

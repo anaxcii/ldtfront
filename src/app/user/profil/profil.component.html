@@ -29,6 +29,14 @@
                      #description="ngModel" [ngModelOptions]="{standalone: true}">
               <label for="floatingTextarea">Description</label>
             </div>
+            <div class="input-group mb-3">
+              <label class="input-group-text" for="photo">Photo</label>
+              <input type="file" class="form-control" id="photo" (change)="onImageFileSelected($event)" accept="image/*">
+            </div>
+            <div class="input-group mb-3">
+              <label class="input-group-text" for="banner">Bannière</label>
+              <input type="file" class="form-control" id="banner" (change)="onBannerImageFileSelected($event)">
+            </div>
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-dark" data-bs-dismiss="modal">Créer</button>
@@ -88,6 +96,14 @@
               <input type="date" class="form-control" id="birth" placeholder="birth" [(ngModel)]="form.birth"
                      #birth="ngModel" [ngModelOptions]="{standalone: true}">
               <label for="birth">{{user?.birth || "Date de naissance"}}</label>
+            </div>
+            <div class="input-group mb-3">
+              <label class="input-group-text" for="photo">Photo</label>
+              <input type="file" class="form-control" id="photop" (change)="onImageFileSelected($event)" accept="image/*">
+            </div>
+            <div class="input-group mb-3">
+              <label class="input-group-text" for="banner">Bannière</label>
+              <input type="file" class="form-control" id="bannerp" (change)="onBannerImageFileSelected($event)">
             </div>
           </div>
           <div class="modal-footer">
@@ -189,13 +205,13 @@
         </div>
       </div>
 
-      <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
+      <div class="col-10">
         <div class="row">
           <ng-container *ngIf="user">
             <div *ngFor="let gallery of user.galleries" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3 ">
               <a [routerLink]="'/collection/' + gallery.id">
                 <div class="card">
-                  <img [src]="gallery.image.imageUrl" class="card-img-top img-fluid card-photo" alt="...">
+                  <img [src]="gallery.image.imageUrl" class="card-img-top img-fluid card-photo">
                   <div class="card-body">
                     <p class="card-text">{{gallery.name}}</p>
                   </div>
