@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.galleriesService.getAllGalleries().subscribe((data: any) => {
-      console.log("Gallery", data);
       this.gallery = data['hydra:member'];
       this.dataLoaded = true; // Marquer les données comme chargées
     });

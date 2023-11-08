@@ -3,7 +3,7 @@ import { UserService } from "../../_services/user.service";
 import { IUser } from "../../_interfaces/user";
 import { GalleriesService } from "../../_services/galleries.service";
 import { Gallery } from "../../_interfaces/gallery";
-import { IRegister } from "../../_interfaces/register";
+
 
 @Component({
   selector: 'app-profil',

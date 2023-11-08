@@ -8,6 +8,13 @@ import {Gallery} from "../_interfaces/gallery";
 })
 export class GalleriesService {
   apiUrl: string = 'https://gaetanthomas.tech/api/galleries';
+
+  CollectionForm: Partial<Gallery> = {
+    image: '',
+    bannerImage: '',
+    creator: "", // Laissez cette chaîne vide pour le moment
+    dropdate: new Date().toISOString()
+  };
   constructor(private http: HttpClient) { }
 
   getGalleries(id: number): Observable<Gallery[]> {
@@ -24,6 +31,11 @@ export class GalleriesService {
 
   getAllGalleries(): Observable<Gallery[]> {
     return this.http.get<Gallery[]>(this.apiUrl);
+  }
+
+  updateCollectionFormImages(filePath: string) {
+    this.CollectionForm.image = filePath;
+    this.CollectionForm.bannerImage = filePath;
   }
 
 }

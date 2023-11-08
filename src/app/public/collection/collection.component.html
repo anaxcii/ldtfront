@@ -2,13 +2,13 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <img *ngIf="gallery" [src]="gallery.image.imageUrl" class="img-fluid w-100" alt="">
+        <img *ngIf="gallery && dataLoaded" [src]="gallery.image.imageUrl" class="img-fluid w-100" alt="">
       </div>
     </div>
   </div>
 </div>
 
-<section>
+<section *ngIf="dataLoaded">
   <div class="custom-banner">
     <img *ngIf="gallery" [src]="gallery.bannerImage.imageUrl" class="img-fluid w-100">
   </div>
@@ -23,7 +23,7 @@
         <p class="nom-collection" *ngIf="gallery">{{ gallery.name }}</p>
       </div>
       <div class="col-1">
-        <div class="dropdown" *ngIf="isOwner">
+        <div class="dropdown" *ngIf="isOwner && dataLoaded">
           <button class="btn" type="button" data-bs-toggle="dropdown">
             <img src="assets/img/three-dots.svg" class="img-fluid">
           </button>
@@ -54,7 +54,7 @@
   <hr class="section-divider">
 </section>
 
-<section>
+<section *ngIf="dataLoaded">
   <div class="container-fluid">
 
     <div class="sticky-nav">

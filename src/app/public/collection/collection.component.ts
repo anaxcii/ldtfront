@@ -15,6 +15,7 @@ export class CollectionComponent implements OnInit {
   gallery!: Gallery;
   nfts!: Nft[];
   isOwner = false;
+  dataLoaded = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,6 +40,7 @@ export class CollectionComponent implements OnInit {
 
     this.nftService.getNftsByGalleries(id).subscribe((data: any) => {
       this.nfts = data['hydra:member'];
+      this.dataLoaded = true; // Marquer les données comme chargées
     });
   }
 
