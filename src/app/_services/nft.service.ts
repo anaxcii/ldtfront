@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import { Observable } from "rxjs";
 import {Nft} from "../_interfaces/nft";
 
@@ -21,6 +21,15 @@ export class NftService {
   getNftsByGalleries(id:number): Observable<Nft[]> {
     let queryParams = {"nftgallery":id.toString()};
     return this.http.get<Nft[]>(this.apiUrl, {params:queryParams});
+  }
+
+  getAllNfts(): Observable<Nft[]> {
+    return this.http.get<Nft[]>(this.apiUrl);
+  }
+
+  getFilteredNfts(searchTerm: string): Observable<Nft[]> {
+    const params = new HttpParams().set('name', searchTerm);
+    return this.http.get<Nft[]>(this.apiUrl, { params });
   }
 
   createNft(galleryId: string, nft: { name: string; image: string; }): Observable<Nft> {

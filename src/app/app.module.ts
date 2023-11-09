@@ -6,6 +6,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {NavbarComponent} from "./public/parts/navbar/navbar.component";
 import {TokenInterceptorProvider} from "./_helpers/token.interceptor";
 import {ImageInterceptorProvider} from "./_helpers/image.interceptor";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import {ImageInterceptorProvider} from "./_helpers/image.interceptor";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [TokenInterceptorProvider, ImageInterceptorProvider],
   exports: [
