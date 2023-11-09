@@ -8,6 +8,36 @@
   </div>
 </div>
 
+
+<section id="nftc">
+  <div class="modal fade"  id="nft" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Création de NFT</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form name="NFTForm" #g="ngForm" (ngSubmit)="CreateNFTOnSubmit()">
+          <div class="modal-body">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="nomcollection" placeholder="Nom"  [(ngModel)]="NFTForm.name"
+                     #name="ngModel" [ngModelOptions]="{standalone: true}">
+              <label for="nomcollection">Nom</label>
+            </div>
+            <div class="input-group mb-3">
+              <label class="input-group-text" for="photo">Photo</label>
+              <input type="file" class="form-control" id="photo" (change)="onImageFileSelected($event)" accept="image/*">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-dark" data-bs-dismiss="modal">Créer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section *ngIf="dataLoaded">
   <div class="custom-banner">
     <img *ngIf="gallery" [src]="gallery.bannerImage.imageUrl" class="img-fluid w-100">
@@ -32,7 +62,9 @@
             <li>
               <button class="dropdown-item" (click)="deleteGallery()" *ngIf="isOwner">Supprimer</button>
             </li>
-            <li><a class="dropdown-item" [routerLink]="'/create-nft/' + gallery.id">Créer un NFT</a></li>
+            <li>
+              <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#nft">Créer un NFT</button>
+            </li>
           </ul>
         </div>
       </div>

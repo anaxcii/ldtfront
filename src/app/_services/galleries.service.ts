@@ -33,9 +33,5 @@ export class GalleriesService {
     return this.http.get<Gallery[]>(this.apiUrl);
   }
 
-  updateCollectionFormImages(filePath: string) {
-    this.CollectionForm.image = filePath;
-    this.CollectionForm.bannerImage = filePath;
-  }
 
 }

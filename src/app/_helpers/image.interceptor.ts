@@ -11,10 +11,7 @@ import { map, Observable } from 'rxjs';
 
 @Injectable()
 export class ImageInterceptor implements HttpInterceptor {
-  intercept(
-    req: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // Vérifiez si la requête concerne la création d'une galerie
     if (req.url.includes('/api/images')) {
       return next.handle(req).pipe(

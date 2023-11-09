@@ -10,6 +10,7 @@ import {PhotoComponent} from "./category/photo/photo.component";
 import {GamingComponent} from "./category/gaming/gaming.component";
 import {PfpsComponent} from "./category/pfps/pfps.component";
 import { NftComponent } from './nft/nft.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -24,9 +25,11 @@ import { NftComponent } from './nft/nft.component';
     NftComponent,
 
   ],
-  imports: [
-    CommonModule,
-    PublicRoutingModule,
-  ]
+    imports: [
+        CommonModule,
+        PublicRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+    ]
 })
 export class PublicModule { }
