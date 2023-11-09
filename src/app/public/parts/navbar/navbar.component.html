@@ -26,9 +26,9 @@
               <div *ngFor="let nft of filteredNfts" class="result-item">
                 <a href="/nft/{{nft.id}}">
                   <div class="container">
-                    <div class="row">
+                    <div class="row align-items-center">
                       <div class="col-4">
-                        <img src="{{nft.image.imageUrl}}" class="w-25">
+                        <img src="{{nft.image.imageUrl}}" class="w-50">
                       </div>
                       <div class="col-6">
                         <p>{{ nft.nftgallery.name }}</p>
@@ -88,9 +88,9 @@
           <div *ngFor="let nft of filteredNfts" class="result-item">
             <a href="/nft/{{nft.id}}">
               <div class="container">
-                <div class="row">
+                <div class="row align-items-center">
                   <div class="col-4">
-                    <img src="{{nft.image.imageUrl}}" class="w-25">
+                    <img src="{{nft.image.imageUrl}}" class="w-50">
                   </div>
                   <div class="col-6">
                     <p>{{ nft.nftgallery.name }}</p>
