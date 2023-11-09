@@ -49,10 +49,10 @@
   </div>
   <div class="container-fluid custom-container">
     <div class="row">
-      <div class="col-11">
+      <div class="col-lg-11 col-md-10 col-sm-9 col-xs-8">
         <p class="nom-collection" *ngIf="gallery">{{ gallery.name }}</p>
       </div>
-      <div class="col-1">
+      <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4">
         <div class="dropdown" *ngIf="isOwner && dataLoaded">
           <button class="btn" type="button" data-bs-toggle="dropdown">
             <img src="assets/img/three-dots.svg" class="img-fluid">
@@ -163,7 +163,7 @@
           <div *ngFor="let nft of nfts" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3 ">
             <a href="nft/{{nft.id}}">
               <div class="card">
-                <img *ngIf="nft" [src]="nft.image.imageUrl" class="card-img-top img-fluid" alt="...">
+                <img *ngIf="nft" [src]="nft.image.imageUrl" class="card-img-top card-photo img-fluid" alt="...">
                 <div class="card-body">
                   <p class="card-text" *ngIf="nft">{{ nft.name }}</p>
                   <p class="card-text" *ngIf="nft">{{ nft.price }} ETH</p>

@@ -62,6 +62,11 @@ a {
 .card{
   margin-bottom: 5%;
 }
+
+.card-photo{
+  height: 301.95px;
+}
+
 .card.sticky-side {
   position: sticky;
   top: 20%;
