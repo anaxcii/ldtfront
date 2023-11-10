@@ -60,6 +60,7 @@ export class NavbarComponent implements OnInit {
   clearCart(): void {
     this.contenuPanier = [];
     localStorage.removeItem('panier');
+    window.location.reload();
   }
 
 }

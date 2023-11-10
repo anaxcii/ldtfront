@@ -12,7 +12,7 @@ import {UserService} from "../../_services/user.service";
 })
 export class NftComponent implements OnInit {
   nft!:Nft;
-  contenuPanier: { name: string, price: number }[] = [];
+  contenuPanier: { name: string, price: number, id:number}[] = [];
   isOwner = false;
 
   constructor(
@@ -39,15 +39,20 @@ export class NftComponent implements OnInit {
 
   };
   ajouterAuPanier(nft: Nft) {
-    // Vérifiez si le NFT est déjà présent dans le panier en fonction de sa position
-    const existeDeja = this.contenuPanier.some(item => item === nft);
+    // Vérifiez si le NFT est déjà présent dans le panier en fonction de son id
+    const existeDeja = this.contenuPanier.some(item => item.id === nft.id);
 
     if (!existeDeja) {
       this.contenuPanier.push(nft);
       localStorage.setItem('panier', JSON.stringify(this.contenuPanier));
+      window.location.reload();
     }
-    window.location.reload();
   }
+
+  estDansLePanier(nft: Nft): boolean {
+    return this.contenuPanier.some(item => item.id === nft.id);
+  }
+
 
   deleteNFT() {
     if (this.isOwner) {
