@@ -107,6 +107,7 @@ export class ProfilComponent implements OnInit {
         console.error('Erreur lors de la création de la galerie :', error);
       }
     );
+    window.location.reload();
   }
 
   onImageFileSelected(event: any) {

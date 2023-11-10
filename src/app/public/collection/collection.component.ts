@@ -46,6 +46,7 @@ export class CollectionComponent implements OnInit {
 
     this.nftService.getNftsByGalleries(id).subscribe((data: any) => {
       this.nfts = data['hydra:member'];
+      console.log(data);
       this.dataLoaded = true; // Marquer les données comme chargées
     });
   }
@@ -90,6 +91,7 @@ export class CollectionComponent implements OnInit {
         }
       );
     }
+    window.location.reload();
   }
 
   onImageFileSelected(event: any) {

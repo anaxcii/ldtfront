@@ -57,5 +57,9 @@ export class NavbarComponent implements OnInit {
       this.getAllNfts();
     }
   }
+  clearCart(): void {
+    this.contenuPanier = [];
+    localStorage.removeItem('panier');
+  }
 
 }

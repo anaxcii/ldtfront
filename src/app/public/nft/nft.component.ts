@@ -34,7 +34,6 @@ export class NftComponent implements OnInit {
     this.contenuPanier = panierData ? JSON.parse(panierData) : [];
     let id = parseInt(this.route.snapshot.paramMap.get('id') || '');
     this.nftService.getNft(id).subscribe((data: any) => {
-      console.log("Nft",data);
       this.nft = data;
     });
 
@@ -47,6 +46,7 @@ export class NftComponent implements OnInit {
       this.contenuPanier.push(nft);
       localStorage.setItem('panier', JSON.stringify(this.contenuPanier));
     }
+    window.location.reload();
   }
 
   deleteNFT() {

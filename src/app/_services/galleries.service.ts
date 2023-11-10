@@ -33,5 +33,9 @@ export class GalleriesService {
     return this.http.get<Gallery[]>(this.apiUrl);
   }
 
+  getGalleriesByCategory(category: string): Observable<Gallery[]> {
+    return this.http.get<Gallery[]>(`${this.apiUrl}?category=${category}`);
+  }
+
 
 }
