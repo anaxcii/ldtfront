@@ -1,9 +1,25 @@
-
 <app-navcarousel></app-navcarousel>
-
-<div *ngFor="let gallery of galleries">
-  <p>{{gallery.name}}</p>
+<div class="container-fluid text-center">
+  <h2>Les collections PFPs</h2>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+      <div class="row">
+        <ng-container *ngIf="galleries">
+          <div *ngFor="let gallery of galleries" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3 ">
+            <a [routerLink]="'/collection/' + gallery.id">
+              <div class="card cc">
+                <img [src]="gallery.image.imageUrl" class="card-img-top img-fluid cp" alt="...">
+                <div class="card-body cb">
+                  <p class="card-text ct">{{gallery.name}}</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="col-1"></div>
+  </div>
 </div>
-
-
 <app-footer></app-footer>
