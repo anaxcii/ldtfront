@@ -9,3 +9,23 @@
 a{
   text-decoration: none;
 }
+
+.name{
+  font-size: xxx-large;
+}
+
+.description{
+  font-size: x-large;
+}
+
+.creator{
+  font-size: large;
+}
+
+section{
+  padding-bottom: 5%;
+}
+
+.c-img{
+  border-radius: 2%;
+}
