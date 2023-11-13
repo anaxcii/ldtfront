@@ -4,6 +4,7 @@ import { IUser } from "../../_interfaces/user";
 import { GalleriesService } from "../../_services/galleries.service";
 import { Gallery } from "../../_interfaces/gallery";
 import { ImageService } from "../../_services/image.service";
+import {TokenService} from "../../_services/token.service";
 
 @Component({
   selector: 'app-profil',
@@ -24,7 +25,8 @@ export class ProfilComponent implements OnInit {
   constructor(
     private userService: UserService,
     private galleriesService: GalleriesService,
-    private imageService: ImageService
+    private imageService: ImageService,
+    private tokenService: TokenService
   ) {}
 
   ngOnInit(): void {
@@ -114,6 +116,10 @@ export class ProfilComponent implements OnInit {
     if (event.target.files && event.target.files.length > 0) {
       this.imageFile = event.target.files[0];
     }
+  }
+
+  logout(): void {
+    this.tokenService.clearToken();
   }
 
   onBannerImageFileSelected(event: any) {
