@@ -161,7 +161,7 @@
       <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
         <div class="row">
           <div *ngFor="let nft of nfts" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3 ">
-            <a href="nft/{{nft.id}}">
+            <a [routerLink]="'/nft/' + nft.id">
               <div class="card">
                 <img *ngIf="nft" [src]="nft.image.imageUrl" class="card-img-top card-photo img-fluid" alt="...">
                 <div class="card-body">

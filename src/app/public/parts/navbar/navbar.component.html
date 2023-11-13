@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg  bg-white sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/"><img src="assets/img/logo.png" class="w-50"></a>
+    <a class="navbar-brand" routerLink="/"><img src="assets/img/logo.png" class="w-50"></a>
 
     <!-- Logo de la loupe avec le déclencheur de la modal de recherche -->
 
@@ -9,8 +9,8 @@
     </a>
 
     <!-- Autres liens du menu mobile -->
-    <a class="nav-link me-2 d-block d-lg-none" href="#"><img src="assets/img/money.svg" class="img-fluid"></a>
-    <a class="nav-link me-2 d-block d-lg-none" href="/user"><img src="assets/img/user.svg" class="img-fluid"></a>
+    <a class="nav-link me-2 d-block d-lg-none" routerLink="#"><img src="assets/img/money.svg" class="img-fluid"></a>
+    <a class="nav-link me-2 d-block d-lg-none" routerLink="/user"><img src="assets/img/user.svg" class="img-fluid"></a>
     <a class="nav-link me-2 d-block d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#cartMenu"><img
       src="assets/img/shopping-cart.svg" class="img-fluid"></a>
 
@@ -44,12 +44,12 @@
           </div>
         </li>
         <li class="nav-item">
-          <a href="#"><img src="assets/img/money.svg" class="nav-link me-5 d-none d-lg-block"></a>
+          <a routerLink="#"><img src="assets/img/money.svg" class="nav-link me-5 d-none d-lg-block"></a>
         </li>
         <li class="nav-item dropdown">
-          <a href="/user"><img src="assets/img/user.svg" class="nav-link me-5 d-none d-lg-block"></a>
+          <a routerLink="/user"><img src="assets/img/user.svg" class="nav-link me-5 d-none d-lg-block"></a>
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-            <li><a class="dropdown-item" href="/user" *ngIf="isUserLoggedIn()">Profil</a></li>
+            <li><a class="dropdown-item" routerLink="/user" *ngIf="isUserLoggedIn()">Profil</a></li>
             <li>
               <button class="dropdown-item" (click)="logout()" *ngIf="isUserLoggedIn(); else showLogin">Se déconnecter
               </button>
@@ -62,7 +62,7 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">Aide</a></li>
+            <li><a class="dropdown-item" routerLink="faq">FAQ</a></li>
           </ul>
         </li>
         <li class="nav-item">

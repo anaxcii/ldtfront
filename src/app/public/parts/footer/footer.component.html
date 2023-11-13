@@ -57,16 +57,16 @@
             Marketplace
           </h6>
           <p>
-            <a href="category/art" class="text-reset">Art</a>
+            <a [routerLink]="'/category/' + 'art'" class="text-reset">Art</a>
           </p>
           <p>
-            <a href="category/gaming" class="text-reset">Gaming</a>
+            <a [routerLink]="'/category/' + 'gaming'" class="text-reset">Gaming</a>
           </p>
           <p>
-            <a href="category/photo" class="text-reset">Photographie</a>
+            <a [routerLink]="'/category/' + 'photo'" class="text-reset">Photographie</a>
           </p>
           <p>
-            <a href="category/pfps" class="text-reset">PFPs</a>
+            <a [routerLink]="'/category/' + 'pfps'" class="text-reset">PFPs</a>
           </p>
         </div>
         <!-- Grid column -->
@@ -78,16 +78,16 @@
             FAQ
           </h6>
           <p>
-            <a href="#!" class="text-reset">Qui sommes nous ?</a>
+            <a [routerLink]="'/faq'" fragment="qsn" class="text-reset">Qui sommes nous ?</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">C'est quoi un nft ?</a>
+            <a [routerLink]="'/faq'" fragment="nft" class="text-reset">C'est quoi un nft ?</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">C'est quoi la blockchain ?</a>
+            <a  [routerLink]="'/faq'" fragment="blockchain" class="text-reset">C'est quoi la blockchain ?</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Comment achetez et vendre ?</a>
+            <a  [routerLink]="'/faq'" fragment="vente" class="text-reset">Comment acheter un NFT ?</a>
           </p>
         </div>
         <!-- Grid column -->

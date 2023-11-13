@@ -7,6 +7,7 @@ import {PhotoComponent} from "./category/photo/photo.component";
 import {GamingComponent} from "./category/gaming/gaming.component";
 import {PfpsComponent} from "./category/pfps/pfps.component";
 import {NftComponent} from "./nft/nft.component";
+import {FaqComponent} from "./faq/faq.component";
 
 
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'category/gaming', component: GamingComponent },
   { path: 'category/pfps', component: PfpsComponent },
   { path: 'nft/:id', component: NftComponent },
+  { path: 'faq', component: FaqComponent },
 ];
 
 @NgModule({

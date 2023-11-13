@@ -1,9 +1,9 @@
 <div class="container">
   <nav class="nav">
-    <a class="nav-link text-black" href="">All</a>
-    <a class="nav-link text-black" href="category/art">Art</a>
-    <a class="nav-link text-black" href="category/photo">Photographie</a>
-    <a class="nav-link text-black" href="category/gaming">Gaming</a>
-    <a class="nav-link text-black" href="category/pfps">PFPs</a>
+    <a class="nav-link text-black" routerLink="">All</a>
+    <a class="nav-link text-black" [routerLink]="'/category/' + 'art'">Art</a>
+    <a class="nav-link text-black" [routerLink]="'/category/' + 'photo'">Photographie</a>
+    <a class="nav-link text-black" [routerLink]="'/category/' + 'gaming'">Gaming</a>
+    <a class="nav-link text-black" [routerLink]="'/category/' + 'pfps'">PFPs</a>
   </nav>
 </div>
