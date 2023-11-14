@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Gallery} from "../_interfaces/gallery";
 
@@ -37,5 +37,10 @@ export class GalleriesService {
     return this.http.get<Gallery[]>(`${this.apiUrl}?category=${category}`);
   }
 
+  modifyGallery(id: number, modifiedGallery: Partial<Gallery>): Observable<Gallery> {
+    // Spécifiez le type de contenu "application/merge-patch+json"
+    const headers = new HttpHeaders({ 'Content-Type': 'application/merge-patch+json' });
+    return this.http.patch<Gallery>(`${this.apiUrl}/${id}`, modifiedGallery, { headers });
+  }
 
 }

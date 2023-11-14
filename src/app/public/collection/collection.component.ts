@@ -110,4 +110,24 @@ export class CollectionComponent implements OnInit {
       console.log('Vous n\'avez pas les droits');
     }
   }
+
+  ModifyGalleryOnSubmit(): void {
+    if (this.gallery && this.gallery.id) {
+      const modifiedGallery = {
+        name: this.gallery.name,
+        description: this.gallery.description,
+      };
+
+      this.galleriesService.modifyGallery(this.gallery.id, modifiedGallery).subscribe(
+        (updatedGallery: Gallery) => {
+          console.log('Gallery updated:', updatedGallery);
+          // Optionally, you can update the local gallery object
+          this.gallery = updatedGallery;
+        },
+        (error) => {
+          console.error('Error updating gallery:', error);
+        }
+      );
+    }
+  }
 }
