@@ -15,7 +15,12 @@ export interface Nft
   },
   owner: |any,
   mintdate:string,
-  transaction: {
+  currentOrder: {
     price_buy: number
   }
+  transaction: {
+    price_buy: number,
+
+  }
+  price: number;
 }

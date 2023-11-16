@@ -12,8 +12,8 @@ import {UserService} from "../../_services/user.service";
 })
 export class NftComponent implements OnInit {
   nft!:Nft;
-  contenuPanier: { name: string, transaction:{price_buy :number}, id:number}[] = [];
-  isOwner = false;
+  contenuPanier: { name: string, currentOrder:{price_buy :number}, id:number}[] = [];
+  isOwner:boolean = false;
 
   constructor(
     private location: Location,
@@ -30,17 +30,17 @@ export class NftComponent implements OnInit {
       }
     });
 
-    const panierData = localStorage.getItem('panier');
+    const panierData:string|null = localStorage.getItem('panier');
     this.contenuPanier = panierData ? JSON.parse(panierData) : [];
-    let id = parseInt(this.route.snapshot.paramMap.get('id') || '');
+    let id:number = parseInt(this.route.snapshot.paramMap.get('id') || '');
     this.nftService.getNft(id).subscribe((data: any) => {
       this.nft = data;
     });
 
   };
-  ajouterAuPanier(nft: Nft) {
+  ajouterAuPanier(nft: Nft):void {
     // Vérifiez si le NFT est déjà présent dans le panier en fonction de son id
-    const existeDeja = this.contenuPanier.some(item => item.id === nft.id);
+    const existeDeja:boolean = this.contenuPanier.some(item => item.id === nft.id);
 
     if (!existeDeja) {
       this.contenuPanier.push(nft);
@@ -54,15 +54,18 @@ export class NftComponent implements OnInit {
   }
 
 
-  deleteNFT() {
+  deleteNFT():void {
     if (this.isOwner) {
       const id = this.nft.id;
       this.nftService.deleteNft(id).subscribe(() => {
-        console.log('NFT supprimé.');
         this.location.back();
       });
-    } else {
-      console.log('Vous ne pouvez pas supprimé cet NFT.');
+    }
+  }
+
+  sellNFT():void {
+    if (this.nft.price && this.nft.id) {
+      this.nftService.sellNft(this.nft.id, this.nft.price).subscribe();
     }
   }
 
