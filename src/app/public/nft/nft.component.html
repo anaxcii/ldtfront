@@ -25,8 +25,8 @@
       <div class="col-7">
         <h5>{{nft.nftgallery.name}}</h5>
         <h2>{{nft.name}}</h2>
-        <h5>{{nft.owner}}</h5>
-        <button class="btn btn-dark" (click)="ajouterAuPanier(nft)" *ngIf="!estDansLePanier(nft)">Ajouter au panier</button>
+        <h5>{{nft.owner.username}}</h5>
+        <button class="btn btn-dark" (click)="ajouterAuPanier(nft)" *ngIf="!estDansLePanier(nft) && nft.transaction?.price_buy">Ajouter au panier</button>
         <button class="btn btn-dark" disabled="true" *ngIf="estDansLePanier(nft)">Dans le panier</button>
         <button class="btn" (click)="deleteNFT()" *ngIf="isOwner">Suprimer</button>
       </div>

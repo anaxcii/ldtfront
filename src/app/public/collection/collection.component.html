@@ -203,16 +203,19 @@
           <div *ngFor="let nft of nfts" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3 ">
             <a [routerLink]="'/nft/' + nft.id">
               <div class="card">
-                <img *ngIf="nft" [src]="nft.image.imageUrl" class="card-img-top card-photo img-fluid" alt="...">
+                <img [src]="nft.image.imageUrl" class="card-img-top card-photo img-fluid" alt="...">
                 <div class="card-body">
-                  <p class="card-text" *ngIf="nft">{{ nft.name }}</p>
-                  <p class="card-text" *ngIf="nft">{{ nft.price }} ETH</p>
+                  <p class="card-text" >{{ nft.name }}</p>
+                  <p class="card-text" *ngIf="nft.transaction?.price_buy">
+                    {{ nft.transaction.price_buy}} ETH
+                  </p>
                 </div>
               </div>
             </a>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>

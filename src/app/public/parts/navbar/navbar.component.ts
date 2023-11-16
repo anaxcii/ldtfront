@@ -11,7 +11,7 @@ import { Nft } from "../../../_interfaces/nft";
 export class NavbarComponent implements OnInit {
   searchTerm: string = '';
   filteredNfts: Nft[] = [];
-  contenuPanier: { image: any, price: number, name: string }[] = [];
+  contenuPanier: { image: any, transaction:{price_buy :number}, name: string }[] = [];
 
   constructor(
     private tokenService: TokenService,

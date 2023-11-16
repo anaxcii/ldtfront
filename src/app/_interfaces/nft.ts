@@ -2,7 +2,6 @@ export interface Nft
 {
   id: number,
   name: string,
-  price: number,
   image: {
     id:number,
     imageUrl:string
@@ -16,6 +15,7 @@ export interface Nft
   },
   owner: |any,
   mintdate:string,
-  on_sale: boolean,
-  transaction: string,
+  transaction: {
+    price_buy: number
+  }
 }

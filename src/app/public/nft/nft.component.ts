@@ -12,7 +12,7 @@ import {UserService} from "../../_services/user.service";
 })
 export class NftComponent implements OnInit {
   nft!:Nft;
-  contenuPanier: { name: string, price: number, id:number}[] = [];
+  contenuPanier: { name: string, transaction:{price_buy :number}, id:number}[] = [];
   isOwner = false;
 
   constructor(
