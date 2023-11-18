@@ -2,10 +2,26 @@ section{
   padding-top: 3%;
 }
 
-
-
 .custom-espace{
   padding-top: 2%;
+}
+
+.custom-accordion .accordion-button {
+  background-color: transparent;
+  color: #000 !important;
+}
+
+.custom-accordion .accordion-button:focus {
+  box-shadow: none !important;
+}
+
+.my-custom-scrollbar {
+  position: relative;
+  height: 200px;
+  overflow: auto;
+}
+.table-wrapper-scroll-y {
+  display: block;
 }
 
 @media (max-width: 768px) {

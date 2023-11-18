@@ -14,19 +14,22 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
-  declarations: [
-    HomeComponent,
-    FooterComponent,
-    CollectionComponent,
-    ArtComponent,
-    NavcarouselComponent,
-    PhotoComponent,
-    GamingComponent,
-    PfpsComponent,
-    NftComponent,
-    FaqComponent,
+    declarations: [
+        HomeComponent,
+        FooterComponent,
+        CollectionComponent,
+        ArtComponent,
+        NavcarouselComponent,
+        PhotoComponent,
+        GamingComponent,
+        PfpsComponent,
+        NftComponent,
+        FaqComponent,
 
-  ],
+    ],
+    exports: [
+        FooterComponent
+    ],
     imports: [
         CommonModule,
         PublicRoutingModule,

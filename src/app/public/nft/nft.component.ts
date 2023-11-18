@@ -4,6 +4,8 @@ import {ActivatedRoute} from "@angular/router";
 import {NftService} from "../../_services/nft.service";
 import { Location } from '@angular/common';
 import {UserService} from "../../_services/user.service";
+import {Transaction} from "../../_interfaces/transaction";
+import {TransactionService} from "../../_services/transaction.service";
 
 @Component({
   selector: 'app-nft',
@@ -11,6 +13,7 @@ import {UserService} from "../../_services/user.service";
   styleUrls: ['./nft.component.css']
 })
 export class NftComponent implements OnInit {
+  transactions: Transaction[] = [];
   nft!:Nft;
   contenuPanier: { name: string, currentOrder:{price_buy :number}, id:number}[] = [];
   isOwner:boolean = false;
@@ -21,6 +24,7 @@ export class NftComponent implements OnInit {
     private route: ActivatedRoute,
     private nftService: NftService,
     private userService: UserService,
+    private transactionService: TransactionService
   ) {}
 
 
@@ -36,13 +40,18 @@ export class NftComponent implements OnInit {
           this.isOwner = true;
         }
       });
-      this.dataLoaded = true;
+
+      this.transactionService.getTransactionsByNftId(id).subscribe((transactions: any) => {
+        this.transactions = transactions['hydra:member'] || [];
+      });
     });
 
     const panierData:string|null = localStorage.getItem('panier');
     this.contenuPanier = panierData ? JSON.parse(panierData) : [];
 
+    this.dataLoaded = true;
   };
+
   ajouterAuPanier(nft: Nft):void {
     // Vérifiez si le NFT est déjà présent dans le panier en fonction de son id
     const existeDeja:boolean = this.contenuPanier.some(item => item.id === nft.id);
@@ -83,6 +92,10 @@ export class NftComponent implements OnInit {
         },
       );
     }
+  }
+
+  annulerVenteNft(id: number): void {
+    this.nftService.cancelOrder(id).subscribe();
   }
 
 }

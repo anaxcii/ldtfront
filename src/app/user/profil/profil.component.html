@@ -153,14 +153,14 @@
       <div class="p-2 custom-info" >{{ user?.nfts.length ?? 'N/A' }}</div>
       <div class="p-2">Collections</div>
       <div class="p-2 custom-info">{{ user?.galleries?.length ?? 'N/A'}}</div>
-      <div class="p-2">Nom</div>
-      <div class="p-2 custom-info">{{ user?.lastname ?? 'N/A'}}</div>
-      <div class="p-2">Prénom</div>
-      <div class="p-2 custom-info">{{ user?.firstname ?? 'N/A'}}</div>
-      <div class="p-2">Naissance</div>
-      <div class="p-2 custom-info">{{ user?.birth | date:'mediumDate' ?? 'N/A'}}</div>
+      <div class="p-2" *ngIf="user?.lastname">Nom</div>
+      <div class="p-2 custom-info" *ngIf="user?.lastname">{{ user?.lastname ?? 'N/A'}}</div>
+      <div class="p-2" *ngIf="user?.firstname">Prénom</div>
+      <div class="p-2 custom-info" *ngIf="user?.firstname">{{ user?.firstname ?? 'N/A'}}</div>
+      <div class="p-2" *ngIf="user?.birth">Naissance</div>
+      <div class="p-2 custom-info" *ngIf="user?.birth">{{ user?.birth | date:'mediumDate'}}</div>
     </div>
-    <p class="description">{{user?.description ?? 'N/A'}}</p>
+    <p class="description" *ngIf="user?.description" >{{user?.description ?? 'N/A'}}</p>
   </div>
   <hr class="section-divider">
 </section>
