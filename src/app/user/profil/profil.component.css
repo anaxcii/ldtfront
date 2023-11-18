@@ -79,6 +79,28 @@ a {
   height: 301.95px;
 }
 
+.btnl{
+  color: grey;
+}
+
+.custom-info{
+  font-weight: bold;
+}
+.custom-info:after{
+  content: " · ";
+}
+
+li{
+  padding-right: 2%;
+}
+
+.btnl:hover{
+  color: black;
+}
+
+.padding{
+  padding-bottom: 2%;
+}
 
 @media all and (min-width: 1000px) {
   .custom-tri{

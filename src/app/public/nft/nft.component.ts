@@ -14,6 +14,7 @@ export class NftComponent implements OnInit {
   nft!:Nft;
   contenuPanier: { name: string, currentOrder:{price_buy :number}, id:number}[] = [];
   isOwner:boolean = false;
+  dataLoaded = false;
 
   constructor(
     private location: Location,
@@ -24,18 +25,22 @@ export class NftComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.userService.getcurrentUser().subscribe((user: any) => {
-      if (user && user.username === this.nft.nftgallery.creator.username) {
-        this.isOwner = true;
-      }
+
+
+    let id:number = parseInt(this.route.snapshot.paramMap.get('id') || '');
+
+    this.nftService.getNft(id).subscribe((data: any) => {
+      this.nft = data;
+      this.userService.getcurrentUser().subscribe((user: any) => {
+        if (user.username === this.nft.owner.username) {
+          this.isOwner = true;
+        }
+      });
+      this.dataLoaded = true;
     });
 
     const panierData:string|null = localStorage.getItem('panier');
     this.contenuPanier = panierData ? JSON.parse(panierData) : [];
-    let id:number = parseInt(this.route.snapshot.paramMap.get('id') || '');
-    this.nftService.getNft(id).subscribe((data: any) => {
-      this.nft = data;
-    });
 
   };
   ajouterAuPanier(nft: Nft):void {
@@ -66,6 +71,17 @@ export class NftComponent implements OnInit {
   sellNFT():void {
     if (this.nft.price && this.nft.id) {
       this.nftService.sellNft(this.nft.id, this.nft.price).subscribe();
+    }
+  }
+
+  acheterNFT() {
+    if (this.nft && this.nft.id) {
+      this.nftService.buyNft(this.nft.id).subscribe(
+        (nft: Nft) => {
+
+          console.log(nft);
+        },
+      );
     }
   }
 

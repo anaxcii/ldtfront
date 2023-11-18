@@ -9,12 +9,14 @@
         <form name="CollectionForm" #g="ngForm" (ngSubmit)="CreateGalleryOnSubmit()">
           <div class="modal-body">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="nomcollection" placeholder="Nom"  [(ngModel)]="CollectionForm.name"
+              <input type="text" class="form-control" id="nomcollection" placeholder="Nom"
+                     [(ngModel)]="CollectionForm.name"
                      #name="ngModel" [ngModelOptions]="{standalone: true}">
               <label for="nomcollection">Nom</label>
             </div>
             <div class="form-floating mb-3">
-              <select class="form-select" id="floatingSelect" aria-label="Choissisez une catégorie"  [(ngModel)]="CollectionForm.category"
+              <select class="form-select" id="floatingSelect" aria-label="Choissisez une catégorie"
+                      [(ngModel)]="CollectionForm.category"
                       #category="ngModel" [ngModelOptions]="{standalone: true}">
                 <option selected>Choissisez une catégorie</option>
                 <option value="Art">Art</option>
@@ -25,13 +27,15 @@
               <label for="floatingSelect">Catégorie</label>
             </div>
             <div class="form-floating mb-3">
-              <input class="form-control" placeholder="Description" id="floatingTextarea" [(ngModel)]="CollectionForm.description"
+              <input class="form-control" placeholder="Description" id="floatingTextarea"
+                     [(ngModel)]="CollectionForm.description"
                      #description="ngModel" [ngModelOptions]="{standalone: true}">
               <label for="floatingTextarea">Description</label>
             </div>
             <div class="input-group mb-3">
               <label class="input-group-text" for="photo">Photo</label>
-              <input type="file" class="form-control" id="photo" (change)="onImageFileSelected($event)" accept="image/*">
+              <input type="file" class="form-control" id="photo" (change)="onImageFileSelected($event)"
+                     accept="image/*">
             </div>
             <div class="input-group mb-3">
               <label class="input-group-text" for="banner">Bannière</label>
@@ -108,7 +112,7 @@
 </section>
 
 
-<section>
+<section class="padding">
   <div class=" custom-banner">
     <img [src]="user?.bannerImage?.imageUrl || 'assets/img/defaut.jpg'" class="img-fluid w-100">
   </div>
@@ -133,7 +137,8 @@
             </li>
             <li><a class="dropdown-item" href="#">Dashboard</a></li>
             <li>
-              <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#collection">Créer une Collection</button>
+              <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#collection">Créer une Collection
+              </button>
             </li>
             <li>
               <button class="dropdown-item" (click)="logout()">Se déconnecter
@@ -143,57 +148,85 @@
         </div>
       </div>
     </div>
-    <p class="description">{{user?.description}}</p>
+    <div class="d-flex flex-wrap">
+      <div class="p-2">NFTs</div>
+      <div class="p-2 custom-info" >{{ user?.nfts.length ?? 'N/A' }}</div>
+      <div class="p-2">Collections</div>
+      <div class="p-2 custom-info">{{ user?.galleries?.length ?? 'N/A'}}</div>
+      <div class="p-2">Nom</div>
+      <div class="p-2 custom-info">{{ user?.lastname ?? 'N/A'}}</div>
+      <div class="p-2">Prénom</div>
+      <div class="p-2 custom-info">{{ user?.firstname ?? 'N/A'}}</div>
+      <div class="p-2">Naissance</div>
+      <div class="p-2 custom-info">{{ user?.birth | date:'mediumDate' ?? 'N/A'}}</div>
+    </div>
+    <p class="description">{{user?.description ?? 'N/A'}}</p>
   </div>
   <hr class="section-divider">
 </section>
 
 <section>
-  <div class="container-fluid">
+  <div class="container">
 
-    <div class="row">
-      <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
-        <div class="dropdown">
-          <button class="btn custom-tri dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-            <img src="assets/img/choix.png" class="img-fluid">
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Mes Collections</a></li>
-            <li><a class="dropdown-item" href="#">Mes NFTs</a></li>
-          </ul>
-        </div>
-        <div class="card sticky-side">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <p>Mes Collections</p>
-            </li>
-            <li class="list-group-item">
-              <p>Mes NFTs</p>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-10">
-        <div class="row">
-          <ng-container *ngIf="user">
-            <div *ngFor="let gallery of user.galleries" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3 ">
-              <a [routerLink]="'/collection/' + gallery.id">
-                <div class="card">
-                  <img [src]="gallery.image.imageUrl" class="card-img-top img-fluid card-photo">
-                  <div class="card-body">
-                    <p class="card-text">{{gallery.name}}</p>
+    <ul class="nav nav-pills mb-3 padding" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link btnl"
+                [ngClass]="{'active': activeTabIndex === 0, 'bg-light': activeTabIndex === 0, 'text-dark': activeTabIndex === 0}"
+                (click)="activeTabIndex = 0"
+                id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-collection"
+                type="button" role="tab" aria-controls="pills-collection" aria-selected="true">Mes Collections
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link btnl"
+                [ngClass]="{'active': activeTabIndex === 1, 'bg-light': activeTabIndex === 1, 'text-dark': activeTabIndex === 1}"
+                (click)="activeTabIndex = 1"
+                id="pills-nfts-tab" data-bs-toggle="pill" data-bs-target="#pills-nfts"
+                type="button" role="tab" aria-controls="pills-nfts" aria-selected="false">Mes NFTs
+        </button>
+      </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-collection" role="tabpanel" aria-labelledby="pills-collection-tab"
+           tabindex="0">
+        <div class="container">
+          <div class="row">
+            <ng-container *ngIf="user">
+              <div *ngFor="let gallery of user.galleries"
+                   class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3 ">
+                <a [routerLink]="'/collection/' + gallery.id">
+                  <div class="card">
+                    <img [src]="gallery.image.imageUrl" class="card-img-top img-fluid card-photo">
+                    <div class="card-body">
+                      <p class="card-text">{{gallery.name}}</p>
+                    </div>
                   </div>
-                </div>
-              </a>
-            </div>
-          </ng-container>
+                </a>
+              </div>
+            </ng-container>
+          </div>
         </div>
       </div>
-
+      <div class="tab-pane fade" id="pills-nfts" role="tabpanel" aria-labelledby="pills-nfts-tab" tabindex="0">
+        <div class="container">
+          <div class="row">
+            <ng-container *ngIf="user">
+              <div *ngFor="let nft of user.nfts"
+                   class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3 ">
+                <a [routerLink]="'/nft/' + nft.id">
+                  <div class="card">
+                    <img [src]="nft.image.imageUrl" class="card-img-top img-fluid card-photo">
+                    <div class="card-body">
+                      <p class="card-text">{{nft.name}}</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
     </div>
-
   </div>
-
 </section>
+

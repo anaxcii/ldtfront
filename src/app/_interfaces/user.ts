@@ -16,7 +16,7 @@ export interface IUser {
     };
   }[];
   money: string,
-  nfts: [],
+  nfts: |any,
   transactions: [],
   image: {
     imageUrl: string;

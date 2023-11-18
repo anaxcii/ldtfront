@@ -12,6 +12,7 @@ import {TokenService} from "../../_services/token.service";
   styleUrls: ['./profil.component.css']
 })
 export class ProfilComponent implements OnInit {
+  activeTabIndex = 0;
   user?: IUser;
   form: Partial<IUser> = {};
   CollectionForm: Partial<Gallery> = {

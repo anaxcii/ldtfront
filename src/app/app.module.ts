@@ -20,8 +20,9 @@ import {FormsModule} from "@angular/forms";
     FormsModule
   ],
   providers: [TokenInterceptorProvider, ImageInterceptorProvider],
-  exports: [
-  ],
+    exports: [
+        NavbarComponent
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -45,4 +45,8 @@ export class NftService {
   sellNft(id: number, price:number): Observable<Nft> {
     return this.http.post<Nft>(`${this.apiUrl}/${id}/sell`, {price : price });
   }
+
+  buyNft(id:number):Observable<Nft>{
+    return this.http.get<Nft>(`${this.apiUrl}/${id}/buy`);
+  }
 }
