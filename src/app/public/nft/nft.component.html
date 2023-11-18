@@ -59,16 +59,6 @@
                 <li>
                   <button class="btn" (click)="deleteNFT()" *ngIf="isOwner">Suprimer</button>
                 </li>
-                <li>
-                  <button class="btn" *ngIf="isOwner && !nft.currentOrder?.price_buy" data-bs-toggle="modal"
-                          data-bs-target="#exampleModal">Vendre
-                  </button>
-                </li>
-                <li>
-                  <button class="btn" (click)="annulerVenteNft(nft.id)" *ngIf="isOwner && nft.currentOrder?.price_buy">
-                    Annuler vente
-                  </button>
-                </li>
               </ul>
             </div>
           </div>
@@ -76,6 +66,12 @@
         <h2>{{nft.name}}</h2>
         <h6>Propriété de {{nft.owner.username}}</h6>
         <p>{{nft.currentOrder?.price_buy}} ETH </p>
+        <button class="btn btn-dark" *ngIf="isOwner && !nft.currentOrder?.price_buy" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">Vendre
+        </button>
+        <button class="btn btn-dark" (click)="annulerVenteNft(nft.id)" *ngIf="isOwner && nft.currentOrder?.price_buy">
+          Annuler vente
+        </button>
         <button class="btn btn-dark" (click)="acheterNFT()" *ngIf="nft.currentOrder?.price_buy && !isOwner">
           Acheter
         </button>
@@ -107,11 +103,13 @@
                       </thead>
                       <tbody>
                       <tr *ngFor="let transaction of transactions.reverse()">
-                        <td>{{ transaction.price_buy}} ETH</td>
-                        <td>{{ transaction.user_seller_id.username }}</td>
-                        <td>{{ transaction.user_buyer_id?.username }}</td>
-                        <td>{{ transaction.endDate | date:'medium' }}</td>
-                        <td>{{ transaction.status }}</td>
+                        <ng-container *ngIf="transaction.nft_id.id === nft.id">
+                          <td>{{ transaction.price_buy}} ETH</td>
+                          <td>{{ transaction.user_seller_id.username }}</td>
+                          <td>{{ transaction.user_buyer_id?.username }}</td>
+                          <td>{{ transaction.endDate | date:'medium' }}</td>
+                          <td>{{ transaction.status }}</td>
+                        </ng-container>
                       </tr>
                       </tbody>
                     </table>
