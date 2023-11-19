@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import {UserService} from "../../_services/user.service";
 import {Transaction} from "../../_interfaces/transaction";
 import {TransactionService} from "../../_services/transaction.service";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-nft',
@@ -18,23 +19,25 @@ export class NftComponent implements OnInit {
   contenuPanier: { name: string, currentOrder:{price_buy :number}, id:number}[] = [];
   isOwner:boolean = false;
   dataLoaded = false;
+  ethPriceInEuros: number = 0;
 
   constructor(
     private location: Location,
-    private route: ActivatedRoute,
     private nftService: NftService,
     private userService: UserService,
-    private transactionService: TransactionService
+    private transactionService: TransactionService,
+    private route: ActivatedRoute,
+    private http: HttpClient
   ) {}
 
 
   ngOnInit(): void {
 
-
     let id:number = parseInt(this.route.snapshot.paramMap.get('id') || '');
 
     this.nftService.getNft(id).subscribe((data: any) => {
       this.nft = data;
+      this.getEthPriceInEuros();
       this.userService.getcurrentUser().subscribe((user: any) => {
         if (user.username === this.nft.owner.username) {
           this.isOwner = true;
@@ -59,7 +62,7 @@ export class NftComponent implements OnInit {
     if (!existeDeja) {
       this.contenuPanier.push(nft);
       localStorage.setItem('panier', JSON.stringify(this.contenuPanier));
-      window.location.reload();
+      location.reload();
     }
   }
 
@@ -77,9 +80,11 @@ export class NftComponent implements OnInit {
     }
   }
 
-  sellNFT():void {
+  sellNFT(): void {
     if (this.nft.price && this.nft.id) {
-      this.nftService.sellNft(this.nft.id, this.nft.price).subscribe();
+      this.nftService.sellNft(this.nft.id, this.nft.price).subscribe(() => {
+        location.reload();
+      });
     }
   }
 
@@ -87,15 +92,32 @@ export class NftComponent implements OnInit {
     if (this.nft && this.nft.id) {
       this.nftService.buyNft(this.nft.id).subscribe(
         (nft: Nft) => {
-
-          console.log(nft);
+          setTimeout(() => {
+            location.reload();
+          }, 1000);
         },
       );
     }
   }
 
+
   annulerVenteNft(id: number): void {
     this.nftService.cancelOrder(id).subscribe();
+    location.reload();
+  }
+
+  getEthPriceInEuros() {
+    this.http.get<any>('https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=EUR')
+      .subscribe(data => {
+        if (data && data.EUR) {
+          this.ethPriceInEuros = data.EUR;
+        }
+      });
+  }
+
+  calculateTotalPrice(): number {
+    // Calculer le prix total en euros en multipliant le prix de l'ETH en euros par nft.currentOrder?.price_buy
+    return this.ethPriceInEuros * (this.nft.currentOrder?.price_buy || 0);
   }
 
 }

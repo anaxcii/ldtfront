@@ -14,8 +14,9 @@ import { ActivatedRoute, Router } from "@angular/router";
   styleUrls: ['./collection.component.css']
 })
 export class CollectionComponent implements OnInit {
+  activeTabIndex = 0;
   gallery!: Gallery;
-  nfts!: Nft[];
+  nfts: any[] = [];
   isOwner = false;
   dataLoaded = false;
   NFTForm: any = {}; // Assurez-vous d'avoir une instance de formulaire NFTForm
@@ -36,18 +37,16 @@ export class CollectionComponent implements OnInit {
       if (user && this.gallery && this.gallery.creator && user.username === this.gallery.creator.username) {
         this.isOwner = true;
       }
-    });
-
-    let id = parseInt(this.route.snapshot.paramMap.get('id') || '');
-    this.galleriesService.getGalleries(id).subscribe((data: any) => {
-      this.gallery = data;
-      console.log(data);
-    });
-
-    this.nftService.getNftsByGalleries(id).subscribe((data: any) => {
-      this.nfts = data['hydra:member'];
-      console.log(data);
-      this.dataLoaded = true; // Marquer les données comme chargées
+      let id = parseInt(this.route.snapshot.paramMap.get('id') || '');
+      this.galleriesService.getGalleries(id).subscribe((data: any) => {
+        this.gallery = data;
+        console.log(data);
+      });
+      this.nftService.getNftsByGalleries(id).subscribe((data: any) => {
+        this.nfts = data['hydra:member'];
+        console.log(data);
+        this.dataLoaded = true; // Marquer les données comme chargées
+      });
     });
   }
 
@@ -91,7 +90,7 @@ export class CollectionComponent implements OnInit {
         }
       );
     }
-    window.location.reload();
+    location.reload();
   }
 
   onImageFileSelected(event: any) {

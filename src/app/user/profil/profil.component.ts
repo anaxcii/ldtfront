@@ -16,12 +16,12 @@ export class ProfilComponent implements OnInit {
   user?: IUser;
   form: Partial<IUser> = {};
   CollectionForm: Partial<Gallery> = {
-    creator: "", // Laissez cette chaîne vide pour le moment
+    creator: "",
     dropdate: new Date().toISOString(),
   };
 
-  imageFile: File | null = null; // Ajout de la propriété imageFile pour le fichier image
-  bannerImageFile: File | null = null; // Ajout de la propriété bannerImageFile pour le fichier de la bannière
+  imageFile: File | null = null;
+  bannerImageFile: File | null = null;
 
   constructor(
     private userService: UserService,

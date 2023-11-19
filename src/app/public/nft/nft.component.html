@@ -65,26 +65,52 @@
         </div>
         <h2>{{nft.name}}</h2>
         <h6>Propriété de {{nft.owner.username}}</h6>
-        <p>{{nft.currentOrder?.price_buy}} ETH </p>
-        <button class="btn btn-dark" *ngIf="isOwner && !nft.currentOrder?.price_buy" data-bs-toggle="modal"
-                data-bs-target="#exampleModal">Vendre
-        </button>
-        <button class="btn btn-dark" (click)="annulerVenteNft(nft.id)" *ngIf="isOwner && nft.currentOrder?.price_buy">
-          Annuler vente
-        </button>
-        <button class="btn btn-dark" (click)="acheterNFT()" *ngIf="nft.currentOrder?.price_buy && !isOwner">
-          Acheter
-        </button>
-        <button class="btn btn-dark" (click)="ajouterAuPanier(nft)"
-                *ngIf="!estDansLePanier(nft) && nft.currentOrder?.price_buy && !isOwner">Ajouter au panier
-        </button>
-        <button class="btn btn-dark" disabled="true" *ngIf="estDansLePanier(nft)">Dans le panier</button>
+
+        <div class="card margin">
+          <div class="card-body">
+            <p class="prixeth">
+              <span class="ethPart">
+                {{ nft.currentOrder?.price_buy !== null ? nft.currentOrder?.price_buy + ' ETH' : 'Pas en vente' }}
+              </span>
+              <span class="prixeur">
+                ({{ (calculateTotalPrice() | number:'1.2-2') }}€)
+              </span>
+            </p>
+            <div class="button-container">
+              <button class="btn btn-light btn-custom" (click)="ajouterAuPanier(nft)"
+                      *ngIf="!estDansLePanier(nft) && nft.currentOrder?.price_buy && !isOwner">
+                Ajouter au panier
+              </button>
+
+              <button class="btn btn-dark btn-custom" disabled="true" *ngIf="estDansLePanier(nft)">
+                Dans le panier
+              </button>
+
+              <button class="btn btn-dark btn-custom" *ngIf="isOwner && !nft.currentOrder?.price_buy" data-bs-toggle="modal"
+                      data-bs-target="#exampleModal">
+                Vendre
+              </button>
+
+              <button class="btn btn-dark btn-custom" (click)="annulerVenteNft(nft.id)"
+                      *ngIf="isOwner && nft.currentOrder?.price_buy">
+                Annuler vente
+              </button>
+
+              <button class="btn btn-dark btn-custom" (click)="acheterNFT()" *ngIf="nft.currentOrder?.price_buy && !isOwner">
+                Acheter
+              </button>
+            </div>
+
+
+          </div>
+        </div>
 
         <div class="transac">
           <div class="accordion custom-accordion" id="accordionExample">
             <div class="accordion-item">
               <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                        aria-expanded="true" aria-controls="collapseOne">
                   Transaction du NFT
                 </button>
               </h2>

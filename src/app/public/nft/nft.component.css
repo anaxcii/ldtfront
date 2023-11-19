@@ -1,5 +1,5 @@
 section{
-  padding-top: 3%;
+  padding-top: 1%;
 }
 
 .custom-espace{
@@ -14,6 +14,27 @@ section{
 .custom-accordion .accordion-button:focus {
   box-shadow: none !important;
 }
+.margin{
+  margin-bottom: 2%;
+}
+
+.prixeth{
+  font-size: x-large;
+}
+
+.prixeur{
+  font-size: small;
+}
+.button-container {
+  display: flex;
+  gap: 2%;
+}
+
+.btn-custom {
+  width: calc(100%);
+  font-size: 110%;
+}
+
 
 .my-custom-scrollbar {
   position: relative;
