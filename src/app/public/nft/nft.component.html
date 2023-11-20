@@ -51,7 +51,8 @@
             <h5>{{nft.nftgallery.name}}</h5>
           </div>
           <div class="col-2">
-            <div class="dropdown" *ngIf="isOwner">
+            <div class="dropdown" *ngIf="isOwner && nft.transaction == null && nft.currentOrder == null">
+
               <button class="btn" type="button" data-bs-toggle="dropdown">
                 <img src="assets/img/three-dots.svg" class="img-fluid">
               </button>

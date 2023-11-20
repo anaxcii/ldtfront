@@ -14,6 +14,7 @@ import { ActivatedRoute, Router } from "@angular/router";
   styleUrls: ['./collection.component.css']
 })
 export class CollectionComponent implements OnInit {
+  triOrder: string = 'asc';
   activeTabIndex = 0;
   gallery!: Gallery;
   nfts: any[] = [];
@@ -33,20 +34,24 @@ export class CollectionComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
+    let id = parseInt(this.route.snapshot.paramMap.get('id') || '');
+
     this.userService.getcurrentUser().subscribe((user: any) => {
       if (user && this.gallery && this.gallery.creator && user.username === this.gallery.creator.username) {
         this.isOwner = true;
       }
-      let id = parseInt(this.route.snapshot.paramMap.get('id') || '');
-      this.galleriesService.getGalleries(id).subscribe((data: any) => {
-        this.gallery = data;
-        console.log(data);
-      });
-      this.nftService.getNftsByGalleries(id).subscribe((data: any) => {
-        this.nfts = data['hydra:member'];
-        console.log(data);
-        this.dataLoaded = true; // Marquer les données comme chargées
-      });
+    });
+
+    this.nftService.getNftsByGalleries(id).subscribe((data: any) => {
+      this.nfts = data['hydra:member'];
+      console.log(data);
+      this.dataLoaded = true; // Marquer les données comme chargées
+    });
+
+    this.galleriesService.getGalleries(id).subscribe((data: any) => {
+      this.gallery = data;
+      console.log(data);
     });
   }
 
@@ -127,6 +132,20 @@ export class CollectionComponent implements OnInit {
           console.error('Error updating gallery:', error);
         }
       );
+    }
+  }
+  trierNFTs(): void {
+    if (this.nfts) {
+      this.nfts.sort((a, b) => {
+        const prixA = a.currentOrder?.price_buy || 0;
+        const prixB = b.currentOrder?.price_buy || 0;
+
+        if (this.triOrder === 'asc') {
+          return prixA - prixB;
+        } else {
+          return prixB - prixA;
+        }
+      });
     }
   }
 }

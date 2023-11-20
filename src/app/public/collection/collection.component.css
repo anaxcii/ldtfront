@@ -84,6 +84,10 @@ a {
   color: black;
 }
 
+li{
+  padding-right: 2%;
+}
+
 
 
 @media all and (max-width: 1000px) {

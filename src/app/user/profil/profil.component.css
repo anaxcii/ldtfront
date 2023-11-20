@@ -43,37 +43,10 @@ a {
 .card{
   margin-bottom: 5%;
 }
-.card.sticky-side {
-  position: sticky;
-  top: 20%;
-  z-index: 1;
-  background-color: white;
-}
-.sticky-nav{
-  position: sticky;
-  top: 8%;
-  z-index: 1;
-  background-color: white;
-  padding-top: 1%;
-}
 .btn-custom{
   border-color: #EAE8E8 ;
 }
 
-.custom-search-form {
-  width: 120%;
-  height: 105%;
-}
-
-.custom-search-input {
-  width: 100%;
-  height: 100%;
-  background-color: transparent;
-  padding: 0 10px;
-  outline: none;
-  border-radius: 10px;
-  border-color: #EAE8E8;
-}
 
 .card-photo{
   height: 301.95px;
